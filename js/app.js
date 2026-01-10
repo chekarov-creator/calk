@@ -10,9 +10,9 @@ import { ExportService } from './export-service.js';
   
   try {
     await Promise.all([
-      dataRepository.loadFromJSON('data/profiles.json'),
-      dataRepository.loadFontFromJSON('data/font.json'),
-      dataRepository.loadFrizolFromJSON('data/frizol_data.json')
+      dataRepository.loadFromJSON('./data/profiles.json'),
+      dataRepository.loadFontFromJSON('./data/font.json'),
+      dataRepository.loadFrizolFromJSON('./data/frizol_data.json')
     ]);
     
     const types = dataRepository.getTypes();
