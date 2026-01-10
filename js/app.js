@@ -43,9 +43,7 @@ import { ExportService } from './export-service.js';
   const exportService = new ExportService(messageManager, rowManager, dataRepository);
 
   $('#btnAdd').addEventListener('click', () => rowManager.addRow());
-  $('#btnCalcAll').addEventListener('click', () => rowManager.recalcAll());
   $('#btnCsv').addEventListener('click', () => exportService.exportCSV());
-  $('#btnXlsx').addEventListener('click', () => exportService.exportXLSX());
   $('#btnPdf').addEventListener('click', () => exportService.exportPDF());
   $('#btnClear').addEventListener('click', () => rowManager.clearAll());
 

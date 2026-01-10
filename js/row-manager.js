@@ -14,10 +14,11 @@ export class RowManager {
   saveToLocalStorage() {
     const rows = [];
     $$('#tbody tr').forEach(tr => {
-      const type = tr.querySelector('td:nth-child(1) select')?.value || '';
-      const std = tr.querySelector('td:nth-child(2) select')?.value || '';
-      const search = tr.querySelector('td:nth-child(3) input')?.value || '';
-      const sizeIndex = tr.querySelector('td:nth-child(3) select')?.value || '';
+      const profileCell = tr.querySelector('td:nth-child(1) .params-column');
+      const type = profileCell?.querySelectorAll('select')[0]?.value || '';
+      const std = profileCell?.querySelectorAll('select')[1]?.value || '';
+      const search = profileCell?.querySelector('input')?.value || '';
+      const sizeIndex = profileCell?.querySelectorAll('select')[2]?.value || '';
       const heatBox = tr.querySelector('.heatbox');
       let heatState = null;
       if (heatBox) {
@@ -33,11 +34,14 @@ export class RowManager {
           };
         }
       }
-      const pInp = tr.querySelector('td:nth-child(4) input[type="number"]')?.value || '';
-      const fireRes = tr.querySelector('td:nth-child(8) select')?.value || '';
-      const thInp = tr.querySelector('td:nth-child(11) input')?.value || '';
-      const qtyInp = tr.querySelector('td:nth-child(13) input')?.value || '';
-      const qtyUnit = tr.querySelector('td:nth-child(13) select')?.value || '';
+      const paramsCell = tr.querySelector('td:nth-child(3) .params-column');
+      const pInp = paramsCell?.querySelector('input[type="number"]')?.value || '';
+      const fireRes = paramsCell?.querySelector('select')?.value || '';
+      const calculationsCell = tr.querySelector('td:nth-child(4) .params-column');
+      const thInp = calculationsCell?.querySelector('input[type="number"]')?.value || '';
+      const resultsCell = tr.querySelector('td:nth-child(5) .params-column');
+      const qtyInp = resultsCell?.querySelector('input[type="number"]')?.value || '';
+      const qtyUnit = resultsCell?.querySelector('select')?.value || '';
       
       rows.push({
         type, std, search, sizeIndex, pInp, fireRes, thInp, qtyInp, qtyUnit,
@@ -73,21 +77,34 @@ export class RowManager {
     this.messageManager.hideMsg();
     const tr = document.createElement('tr');
 
-    const tdType = document.createElement('td');
+    const tdProfile = document.createElement('td');
+    const profileCell = document.createElement('div');
+    profileCell.className = 'params-column';
+    
     const types = this.dataRepository.getTypes();
     console.log('Available types:', types);
     const defaultType = types.includes('Профиль (кв/прям)') ? 'Профиль (кв/прям)' : (types[0] || '');
     const typeSel = makeSelect(types.map(t => ({ value: t, label: t })), defaultType);
     console.log('Selected default type:', defaultType);
-    tdType.appendChild(typeSel);
-    tr.appendChild(tdType);
+    const typeLabel = document.createElement('label');
+    typeLabel.className = 'param-label';
+    typeLabel.textContent = 'Тип';
+    const typeWrapper = document.createElement('div');
+    typeWrapper.className = 'param-group';
+    typeWrapper.appendChild(typeLabel);
+    typeWrapper.appendChild(typeSel);
+    profileCell.appendChild(typeWrapper);
 
-    const tdStd = document.createElement('td');
     const stdSel = makeSelect([], '');
-    tdStd.appendChild(stdSel);
-    tr.appendChild(tdStd);
+    const stdLabel = document.createElement('label');
+    stdLabel.className = 'param-label';
+    stdLabel.textContent = 'ГОСТ';
+    const stdWrapper = document.createElement('div');
+    stdWrapper.className = 'param-group';
+    stdWrapper.appendChild(stdLabel);
+    stdWrapper.appendChild(stdSel);
+    profileCell.appendChild(stdWrapper);
 
-    const tdSize = document.createElement('td');
     const sizeCell = document.createElement('div');
     sizeCell.className = 'cell';
     const search = makeInput('', false);
@@ -95,42 +112,63 @@ export class RowManager {
     const sizeSel = makeSelect([], '');
     sizeCell.appendChild(search);
     sizeCell.appendChild(sizeSel);
-    tdSize.appendChild(sizeCell);
-    tr.appendChild(tdSize);
+    const sizeLabel = document.createElement('label');
+    sizeLabel.className = 'param-label';
+    sizeLabel.textContent = 'Типоразмер (поиск)';
+    const sizeWrapper = document.createElement('div');
+    sizeWrapper.className = 'param-group';
+    sizeWrapper.appendChild(sizeLabel);
+    sizeWrapper.appendChild(sizeCell);
+    profileCell.appendChild(sizeWrapper);
+
+    tdProfile.appendChild(profileCell);
+    tr.appendChild(tdProfile);
 
     const tdHeat = document.createElement('td');
     const heatBox = document.createElement('div');
     heatBox.className = 'heatbox';
     const heatCtrl = new HeatControl();
     heatBox.appendChild(heatCtrl.el);
-
-    const right = document.createElement('div');
-    right.className = 'cell';
-    const pInp = makeInput('', false, 'number');
-    pInp.step = '0.01';
-    pInp.min = '0';
-    pInp.placeholder = 'P (см) — можно вручную';
-    right.appendChild(pInp);
-    heatBox.appendChild(right);
     tdHeat.appendChild(heatBox);
     tr.appendChild(tdHeat);
 
-    const tdS = document.createElement('td');
+    const tdParams = document.createElement('td');
+    const paramsCell = document.createElement('div');
+    paramsCell.className = 'params-column';
+    
+    const pInp = makeInput('', false, 'number');
+    pInp.step = '0.01';
+    pInp.min = '0';
+    pInp.placeholder = 'Периметр — можно вручную';
+    const pLabel = document.createElement('label');
+    pLabel.className = 'param-label';
+    pLabel.textContent = 'Периметр (см)';
+    const pWrapper = document.createElement('div');
+    pWrapper.className = 'param-group';
+    pWrapper.appendChild(pLabel);
+    pWrapper.appendChild(pInp);
+    paramsCell.appendChild(pWrapper);
+
     const outS = makeInput('—', true);
-    tdS.appendChild(outS);
-    tr.appendChild(tdS);
+    const sLabel = document.createElement('label');
+    sLabel.className = 'param-label';
+    sLabel.textContent = 'Площадь (см²)';
+    const sWrapper = document.createElement('div');
+    sWrapper.className = 'param-group';
+    sWrapper.appendChild(sLabel);
+    sWrapper.appendChild(outS);
+    paramsCell.appendChild(sWrapper);
 
-    const tdP = document.createElement('td');
-    const outP = makeInput('—', true);
-    tdP.appendChild(outP);
-    tr.appendChild(tdP);
-
-    const tdX = document.createElement('td');
     const outX = makeInput('—', true);
-    tdX.appendChild(outX);
-    tr.appendChild(tdX);
+    const xLabel = document.createElement('label');
+    xLabel.className = 'param-label';
+    xLabel.textContent = 'ПТМ (мм)';
+    const xWrapper = document.createElement('div');
+    xWrapper.className = 'param-group';
+    xWrapper.appendChild(xLabel);
+    xWrapper.appendChild(outX);
+    paramsCell.appendChild(xWrapper);
 
-    const tdFireRes = document.createElement('td');
     const fireResLimits = this.dataRepository.getFireResistanceLimits();
     const fireResOptions = [
       { value: '', label: '—' },
@@ -140,32 +178,71 @@ export class RowManager {
       }))
     ];
     const fireResSel = makeSelect(fireResOptions, '');
-    tdFireRes.appendChild(fireResSel);
-    tr.appendChild(tdFireRes);
+    const fireResLabel = document.createElement('label');
+    fireResLabel.className = 'param-label';
+    fireResLabel.textContent = 'Предел огнестойкости';
+    const fireResWrapper = document.createElement('div');
+    fireResWrapper.className = 'param-group';
+    fireResWrapper.appendChild(fireResLabel);
+    fireResWrapper.appendChild(fireResSel);
+    paramsCell.appendChild(fireResWrapper);
 
-    const tdApm = document.createElement('td');
+    tdParams.appendChild(paramsCell);
+    tr.appendChild(tdParams);
+
+    const tdCalculations = document.createElement('td');
+    const calculationsCell = document.createElement('div');
+    calculationsCell.className = 'params-column';
+    
     const outApm = makeInput('—', true);
-    tdApm.appendChild(outApm);
-    tr.appendChild(tdApm);
+    const apmLabel = document.createElement('label');
+    apmLabel.className = 'param-label';
+    apmLabel.textContent = 'Площадь/м (м²)';
+    const apmWrapper = document.createElement('div');
+    apmWrapper.className = 'param-group';
+    apmWrapper.appendChild(apmLabel);
+    apmWrapper.appendChild(outApm);
+    calculationsCell.appendChild(apmWrapper);
 
-    const tdApt = document.createElement('td');
     const outApt = makeInput('—', true);
-    tdApt.appendChild(outApt);
-    tr.appendChild(tdApt);
+    const aptLabel = document.createElement('label');
+    aptLabel.className = 'param-label';
+    aptLabel.textContent = 'Площадь/т (м²)';
+    const aptWrapper = document.createElement('div');
+    aptWrapper.className = 'param-group';
+    aptWrapper.appendChild(aptLabel);
+    aptWrapper.appendChild(outApt);
+    calculationsCell.appendChild(aptWrapper);
 
-    const tdTh = document.createElement('td');
     const thInp = makeInput($('#defaultThickness').value || '1', false, 'number');
     thInp.step = '0.01';
     thInp.min = '0';
-    tdTh.appendChild(thInp);
-    tr.appendChild(tdTh);
+    const thLabel = document.createElement('label');
+    thLabel.className = 'param-label';
+    thLabel.textContent = 'Толщина (мм)';
+    const thWrapper = document.createElement('div');
+    thWrapper.className = 'param-group';
+    thWrapper.appendChild(thLabel);
+    thWrapper.appendChild(thInp);
+    calculationsCell.appendChild(thWrapper);
 
-    const tdCons = document.createElement('td');
+    tdCalculations.appendChild(calculationsCell);
+    tr.appendChild(tdCalculations);
+
+    const tdResults = document.createElement('td');
+    const resultsCell = document.createElement('div');
+    resultsCell.className = 'params-column';
+    
     const outCons = makeInput('—', true);
-    tdCons.appendChild(outCons);
-    tr.appendChild(tdCons);
+    const consLabel = document.createElement('label');
+    consLabel.className = 'param-label';
+    consLabel.textContent = 'Расход (кг/м²)';
+    const consWrapper = document.createElement('div');
+    consWrapper.className = 'param-group';
+    consWrapper.appendChild(consLabel);
+    consWrapper.appendChild(outCons);
+    resultsCell.appendChild(consWrapper);
 
-    const tdQty = document.createElement('td');
     const qtyCell = document.createElement('div');
     qtyCell.className = 'cell';
     const qtyInp = makeInput('1', false, 'number');
@@ -174,13 +251,27 @@ export class RowManager {
     const qtyUnit = makeSelect([{ value: 'm', label: 'м' }, { value: 't', label: 'т' }], $('#defaultQtyUnit').value || 'm');
     qtyCell.appendChild(qtyInp);
     qtyCell.appendChild(qtyUnit);
-    tdQty.appendChild(qtyCell);
-    tr.appendChild(tdQty);
+    const qtyLabel = document.createElement('label');
+    qtyLabel.className = 'param-label';
+    qtyLabel.textContent = 'Количество';
+    const qtyWrapper = document.createElement('div');
+    qtyWrapper.className = 'param-group';
+    qtyWrapper.appendChild(qtyLabel);
+    qtyWrapper.appendChild(qtyCell);
+    resultsCell.appendChild(qtyWrapper);
 
-    const tdTot = document.createElement('td');
     const outTot = makeInput('—', true);
-    tdTot.appendChild(outTot);
-    tr.appendChild(tdTot);
+    const totLabel = document.createElement('label');
+    totLabel.className = 'param-label';
+    totLabel.textContent = 'Итого (кг)';
+    const totWrapper = document.createElement('div');
+    totWrapper.className = 'param-group';
+    totWrapper.appendChild(totLabel);
+    totWrapper.appendChild(outTot);
+    resultsCell.appendChild(totWrapper);
+
+    tdResults.appendChild(resultsCell);
+    tr.appendChild(tdResults);
 
     const tdAct = document.createElement('td');
     const btnDel = document.createElement('button');
@@ -244,7 +335,7 @@ export class RowManager {
       this.messageManager.hideMsg();
       const it = currentItem();
       if (!it) {
-        outS.value = outP.value = outX.value = outApm.value = outApt.value = outCons.value = outTot.value = '—';
+        outS.value = outX.value = outApm.value = outApt.value = outCons.value = outTot.value = '—';
         fireResSel.value = '';
         return;
       }
@@ -261,7 +352,6 @@ export class RowManager {
       const X = CalculationService.ptm(g.S_cm2, P_cm);
 
       outS.value = Number.isFinite(g.S_cm2) ? String(round(g.S_cm2, 2)) : '—';
-      outP.value = Number.isFinite(P_cm) ? String(round(P_cm, 2)) : '—';
       outX.value = Number.isFinite(X) ? String(round(X, 2)) : '—';
 
       const areaPerM = P_cm * 0.01;
@@ -386,7 +476,8 @@ export class RowManager {
   recalcAll() {
     this.messageManager.hideMsg();
     $$('#tbody tr').forEach(tr => {
-      const th = tr.querySelector('td:nth-child(10) input');
+      const calculationsCell = tr.querySelector('td:nth-child(4) .params-column');
+      const th = calculationsCell?.querySelector('input[type="number"]');
       if (th) th.dispatchEvent(new Event('input'));
     });
     this.messageManager.showOk('Пересчитано.');
@@ -408,25 +499,31 @@ export class RowManager {
     this.recalcAll();
     const rows = [];
     $$('#tbody tr').forEach(tr => {
-      const type = tr.querySelector('td:nth-child(1) select')?.value || '';
-      const std = tr.querySelector('td:nth-child(2) select')?.value || '';
-      const name = tr.querySelector('td:nth-child(3) select')?.selectedOptions?.[0]?.textContent || '';
-      const P_in = tr.querySelector('td:nth-child(4) input')?.value || '';
-      const S = tr.querySelector('td:nth-child(5) input')?.value || '';
-      const P = tr.querySelector('td:nth-child(6) input')?.value || '';
-      const X = tr.querySelector('td:nth-child(7) input')?.value || '';
-      const fireRes = tr.querySelector('td:nth-child(8) select')?.value || '';
-      const A1 = tr.querySelector('td:nth-child(9) input')?.value || '';
-      const At = tr.querySelector('td:nth-child(10) input')?.value || '';
-      const th = tr.querySelector('td:nth-child(11) input')?.value || '';
-      const c2 = tr.querySelector('td:nth-child(12) input')?.value || '';
-      const qty = tr.querySelector('td:nth-child(13) input')?.value || '';
-      const unit = tr.querySelector('td:nth-child(13) select')?.value || '';
-      const tot = tr.querySelector('td:nth-child(14) input')?.value || '';
+      const profileCell = tr.querySelector('td:nth-child(1) .params-column');
+      const type = profileCell?.querySelectorAll('select')[0]?.value || '';
+      const std = profileCell?.querySelectorAll('select')[1]?.value || '';
+      const name = profileCell?.querySelectorAll('select')[2]?.selectedOptions?.[0]?.textContent || '';
+      const paramsCell = tr.querySelector('td:nth-child(3) .params-column');
+      const P_in = paramsCell?.querySelector('input[type="number"]')?.value || '';
+      const readonlyInputs = paramsCell?.querySelectorAll('input[readonly]') || [];
+      const S = readonlyInputs[0]?.value || '';
+      const X = readonlyInputs[1]?.value || '';
+      const fireRes = paramsCell?.querySelector('select')?.value || '';
+      const calculationsCell = tr.querySelector('td:nth-child(4) .params-column');
+      const calculationsInputs = calculationsCell?.querySelectorAll('input[readonly]') || [];
+      const A1 = calculationsInputs[0]?.value || '';
+      const At = calculationsInputs[1]?.value || '';
+      const th = calculationsCell?.querySelector('input[type="number"]')?.value || '';
+      const resultsCell = tr.querySelector('td:nth-child(5) .params-column');
+      const resultsInputs = resultsCell?.querySelectorAll('input[readonly]') || [];
+      const c2 = resultsInputs[0]?.value || '';
+      const qty = resultsCell?.querySelector('input[type="number"]')?.value || '';
+      const unit = resultsCell?.querySelector('select')?.value || '';
+      const tot = resultsInputs[1]?.value || '';
       if (S && S !== '—') {
         rows.push({
-          'Тип': type, 'ГОСТ': std, 'Типоразмер': name, 'P (ввод)': P_in,
-          'S (см²)': S, 'P (см)': P, 'ПТМ (мм)': X, 'Предел огнестойкости': fireRes, 'Площадь/м (м²)': A1,
+          'Тип': type, 'ГОСТ': std, 'Типоразмер': name, 'Периметр': P_in,
+          'Площадь': S, 'ПТМ (мм)': X, 'Предел огнестойкости': fireRes, 'Площадь/м (м²)': A1,
           'Площадь/т (м²)': At, 'Толщина (мм)': th, 'Расход (кг/м²)': c2,
           'Количество': qty, 'Ед': unit, 'Итого (кг)': tot
         });
