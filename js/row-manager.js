@@ -36,8 +36,8 @@ export class RowManager {
       }
       const paramsCell = tr.querySelector('td:nth-child(3) .params-column');
       const pInp = paramsCell?.querySelector('input[type="number"]')?.value || '';
-      const fireRes = paramsCell?.querySelector('select')?.value || '';
       const calculationsCell = tr.querySelector('td:nth-child(4) .params-column');
+      const fireRes = calculationsCell?.querySelector('select')?.value || '';
       const thInp = calculationsCell?.querySelector('input[type="number"]')?.value || '';
       const resultsCell = tr.querySelector('td:nth-child(5) .params-column');
       const qtyInp = resultsCell?.querySelector('input[type="number"]')?.value || '';
@@ -114,7 +114,7 @@ export class RowManager {
     sizeCell.appendChild(sizeSel);
     const sizeLabel = document.createElement('label');
     sizeLabel.className = 'param-label';
-    sizeLabel.textContent = 'Типоразмер (поиск)';
+    sizeLabel.textContent = 'Размер';
     const sizeWrapper = document.createElement('div');
     sizeWrapper.className = 'param-group';
     sizeWrapper.appendChild(sizeLabel);
@@ -142,7 +142,7 @@ export class RowManager {
     pInp.placeholder = 'Периметр — можно вручную';
     const pLabel = document.createElement('label');
     pLabel.className = 'param-label';
-    pLabel.textContent = 'Периметр (см)';
+    pLabel.textContent = 'Периметр обогреваемой поверхности см';
     const pWrapper = document.createElement('div');
     pWrapper.className = 'param-group';
     pWrapper.appendChild(pLabel);
@@ -152,7 +152,7 @@ export class RowManager {
     const outS = makeInput('—', true);
     const sLabel = document.createElement('label');
     sLabel.className = 'param-label';
-    sLabel.textContent = 'Площадь (см²)';
+    sLabel.textContent = 'Площадь сечения см²';
     const sWrapper = document.createElement('div');
     sWrapper.className = 'param-group';
     sWrapper.appendChild(sLabel);
@@ -169,24 +169,6 @@ export class RowManager {
     xWrapper.appendChild(outX);
     paramsCell.appendChild(xWrapper);
 
-    const fireResLimits = this.dataRepository.getFireResistanceLimits();
-    const fireResOptions = [
-      { value: '', label: '—' },
-      ...fireResLimits.map(limit => ({
-        value: `R${limit}`,
-        label: `R${limit}`
-      }))
-    ];
-    const fireResSel = makeSelect(fireResOptions, '');
-    const fireResLabel = document.createElement('label');
-    fireResLabel.className = 'param-label';
-    fireResLabel.textContent = 'Предел огнестойкости';
-    const fireResWrapper = document.createElement('div');
-    fireResWrapper.className = 'param-group';
-    fireResWrapper.appendChild(fireResLabel);
-    fireResWrapper.appendChild(fireResSel);
-    paramsCell.appendChild(fireResWrapper);
-
     tdParams.appendChild(paramsCell);
     tr.appendChild(tdParams);
 
@@ -194,10 +176,50 @@ export class RowManager {
     const calculationsCell = document.createElement('div');
     calculationsCell.className = 'params-column';
     
+    const getMaterial = () => $('#materialSelect')?.value || 'ograx';
+    
+    const updateFireResistanceOptions = () => {
+      const material = getMaterial();
+      const fireResLimits = this.dataRepository.getFireResistanceLimits(material);
+      const currentValue = fireResSel.value;
+      fireResSel.innerHTML = '';
+      const emptyOpt = document.createElement('option');
+      emptyOpt.value = '';
+      emptyOpt.textContent = '—';
+      fireResSel.appendChild(emptyOpt);
+      fireResLimits.forEach(limit => {
+        const opt = document.createElement('option');
+        opt.value = limit.startsWith('R') ? limit : `R${limit}`;
+        opt.textContent = limit.startsWith('R') ? limit : `R${limit}`;
+        fireResSel.appendChild(opt);
+      });
+      // Восстанавливаем значение, если оно есть в новом списке
+      if (currentValue && Array.from(fireResSel.options).some(opt => opt.value === currentValue)) {
+        fireResSel.value = currentValue;
+      } else {
+        fireResSel.value = '';
+      }
+    };
+    
+    // Сохраняем функцию для внешнего доступа
+    fireResSel._updateOptions = updateFireResistanceOptions;
+    
+    const fireResSel = makeSelect([], '');
+    const fireResLabel = document.createElement('label');
+    fireResLabel.className = 'param-label';
+    fireResLabel.textContent = 'Предел огнестойкости';
+    const fireResWrapper = document.createElement('div');
+    fireResWrapper.className = 'param-group';
+    fireResWrapper.appendChild(fireResLabel);
+    fireResWrapper.appendChild(fireResSel);
+    calculationsCell.appendChild(fireResWrapper);
+    
+    updateFireResistanceOptions();
+    
     const outApm = makeInput('—', true);
     const apmLabel = document.createElement('label');
     apmLabel.className = 'param-label';
-    apmLabel.textContent = 'Площадь/м (м²)';
+    apmLabel.textContent = 'Площадь мп/м²';
     const apmWrapper = document.createElement('div');
     apmWrapper.className = 'param-group';
     apmWrapper.appendChild(apmLabel);
@@ -207,7 +229,7 @@ export class RowManager {
     const outApt = makeInput('—', true);
     const aptLabel = document.createElement('label');
     aptLabel.className = 'param-label';
-    aptLabel.textContent = 'Площадь/т (м²)';
+    aptLabel.textContent = 'Площадь тн/м²';
     const aptWrapper = document.createElement('div');
     aptWrapper.className = 'param-group';
     aptWrapper.appendChild(aptLabel);
@@ -219,7 +241,7 @@ export class RowManager {
     thInp.min = '0';
     const thLabel = document.createElement('label');
     thLabel.className = 'param-label';
-    thLabel.textContent = 'Толщина (мм)';
+    thLabel.textContent = 'Толщина нанесения';
     const thWrapper = document.createElement('div');
     thWrapper.className = 'param-group';
     thWrapper.appendChild(thLabel);
@@ -248,7 +270,7 @@ export class RowManager {
     const qtyInp = makeInput('1', false, 'number');
     qtyInp.step = '0.01';
     qtyInp.min = '0';
-    const qtyUnit = makeSelect([{ value: 'm', label: 'м' }, { value: 't', label: 'т' }], $('#defaultQtyUnit').value || 'm');
+    const qtyUnit = makeSelect([{ value: 'm', label: 'м²' }, { value: 't', label: 'тн' }], $('#defaultQtyUnit').value || 'm');
     qtyCell.appendChild(qtyInp);
     qtyCell.appendChild(qtyUnit);
     const qtyLabel = document.createElement('label');
@@ -366,11 +388,12 @@ export class RowManager {
       let th, consM2;
       
       if (fireResValue && Number.isFinite(X)) {
-        const frizolData = this.dataRepository.getThicknessAndConsumption(X, fireResValue);
-        if (frizolData) {
-          th = frizolData.thickness;
+        const material = getMaterial();
+        const materialData = this.dataRepository.getThicknessAndConsumption(X, fireResValue, material);
+        if (materialData) {
+          th = materialData.thickness;
           thInp.value = String(round(th, 2));
-          consM2 = frizolData.consumption;
+          consM2 = materialData.consumption;
           outCons.value = Number.isFinite(consM2) ? String(round(consM2, 3)) : '—';
         } else {
           const rate = Number($('#ratePerMm').value);
@@ -422,6 +445,11 @@ export class RowManager {
     qtyUnit.addEventListener('change', () => { recalc(); saveData(); });
     fireResSel.addEventListener('change', () => { recalc(); saveData(); });
     $('#ratePerMm').addEventListener('input', () => { this.recalcAll(); saveData(); });
+    $('#materialSelect')?.addEventListener('change', () => { 
+      updateFireResistanceOptions(); 
+      recalc(); 
+      saveData(); 
+    });
     heatCtrl.el.addEventListener('change', () => { pInp.value = ''; recalc(); saveData(); });
 
     btnDel.addEventListener('click', () => {
@@ -484,6 +512,16 @@ export class RowManager {
     setTimeout(() => this.messageManager.hideMsg(), 1200);
   }
 
+  updateAllRowsForMaterial() {
+    $$('#tbody tr').forEach(tr => {
+      const fireResSel = tr.querySelector('td:nth-child(4) .param-group:nth-child(1) select');
+      if (fireResSel && fireResSel._updateOptions) {
+        fireResSel._updateOptions();
+        fireResSel.dispatchEvent(new Event('change'));
+      }
+    });
+  }
+
   clearAll() {
     this.messageManager.hideMsg();
     this.tbody.innerHTML = '';
@@ -508,8 +546,8 @@ export class RowManager {
       const readonlyInputs = paramsCell?.querySelectorAll('input[readonly]') || [];
       const S = readonlyInputs[0]?.value || '';
       const X = readonlyInputs[1]?.value || '';
-      const fireRes = paramsCell?.querySelector('select')?.value || '';
       const calculationsCell = tr.querySelector('td:nth-child(4) .params-column');
+      const fireRes = calculationsCell?.querySelector('select')?.value || '';
       const calculationsInputs = calculationsCell?.querySelectorAll('input[readonly]') || [];
       const A1 = calculationsInputs[0]?.value || '';
       const At = calculationsInputs[1]?.value || '';
@@ -522,9 +560,9 @@ export class RowManager {
       const tot = resultsInputs[1]?.value || '';
       if (S && S !== '—') {
         rows.push({
-          'Тип': type, 'ГОСТ': std, 'Типоразмер': name, 'Периметр': P_in,
-          'Площадь': S, 'ПТМ (мм)': X, 'Предел огнестойкости': fireRes, 'Площадь/м (м²)': A1,
-          'Площадь/т (м²)': At, 'Толщина (мм)': th, 'Расход (кг/м²)': c2,
+          'Тип': type, 'ГОСТ': std, 'Размер': name, 'Периметр обогреваемой поверхности см': P_in,
+          'Площадь сечения см²': S, 'ПТМ (мм)': X, 'Предел огнестойкости': fireRes, 'Площадь мп/м²': A1,
+          'Площадь тн/м²': At, 'Толщина нанесения': th, 'Расход (кг/м²)': c2,
           'Количество': qty, 'Ед': unit, 'Итого (кг)': tot
         });
       }

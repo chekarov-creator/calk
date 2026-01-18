@@ -5,9 +5,11 @@ export class DataRepository {
     this.DB = {};
     this.DEJAVU_TTF_BASE64 = '';
     this.frizolData = null;
+    this.sternfireData = null;
     this.loaded = false;
     this.fontLoaded = false;
     this.frizolLoaded = false;
+    this.sternfireLoaded = false;
   }
 
   async loadFromJSON(jsonUrl) {
@@ -70,63 +72,157 @@ export class DataRepository {
     }
   }
 
-  getFireResistanceLimits() {
-    if (!this.frizolData || !this.frizolData.data) return [];
+  getFireResistanceLimits(material = 'ograx') {
     const limits = new Set();
-    Object.values(this.frizolData.data).forEach(ptmData => {
-      Object.keys(ptmData).forEach(limit => limits.add(limit));
-    });
-    return Array.from(limits).sort((a, b) => Number(a) - Number(b));
+    
+    if (material === 'sternfire' && this.sternfireData && Array.isArray(this.sternfireData)) {
+      // Для Sternfire берем все ключи кроме "ПТМ" и "null"
+      this.sternfireData.forEach(item => {
+        Object.keys(item).forEach(key => {
+          if (key !== 'ПТМ' && key !== 'null') {
+            limits.add(key);
+          }
+        });
+      });
+    } else if (this.frizolData && this.frizolData.data) {
+      // Для Frizol/Огракс
+      Object.values(this.frizolData.data).forEach(ptmData => {
+        Object.keys(ptmData).forEach(limit => limits.add(limit));
+      });
+    }
+    
+    // Преобразуем в формат R15, R45 и т.д. если нужно
+    const result = Array.from(limits)
+      .map(limit => {
+        // Если уже в формате R15, оставляем как есть
+        if (limit.startsWith('R')) return limit;
+        // Если просто число, добавляем R
+        if (/^\d+$/.test(limit)) return `R${limit}`;
+        // Иначе оставляем как есть (например "90 мин (конструктив)")
+        return limit;
+      })
+      .sort((a, b) => {
+        // Сортируем: сначала R15, R45, R60, R90, потом остальные
+        const aNum = parseInt(a.replace('R', '')) || 999;
+        const bNum = parseInt(b.replace('R', '')) || 999;
+        return aNum - bNum;
+      });
+    
+    return result;
   }
 
-  getThicknessAndConsumption(ptm, fireResistanceLimit) {
-    if (!this.frizolData || !this.frizolData.data || !ptm || !fireResistanceLimit) {
-      console.log('getThicknessAndConsumption: missing data', { ptm, fireResistanceLimit, hasFrizolData: !!this.frizolData });
+  async loadSternfireFromJSON(jsonUrl) {
+    if (this.sternfireLoaded) return;
+    const sternfireData = await JSONLoader.loadFromFile(jsonUrl);
+    if (sternfireData && Array.isArray(sternfireData)) {
+      this.sternfireData = sternfireData;
+      this.sternfireLoaded = true;
+      console.log('Sternfire data loaded');
+    } else {
+      console.warn('Failed to load Sternfire JSON');
+    }
+  }
+
+  getThicknessAndConsumption(ptm, fireResistanceLimit, material = 'ograx') {
+    if (!ptm || !fireResistanceLimit) {
+      console.log('getThicknessAndConsumption: missing ptm or fireResistanceLimit', { ptm, fireResistanceLimit });
       return null;
     }
 
-    const limit = fireResistanceLimit.replace('R', '');
     const ptmNum = Number(ptm);
-    
     if (!Number.isFinite(ptmNum)) {
       console.log('getThicknessAndConsumption: invalid PTM', ptm);
       return null;
     }
 
-    const ptmStr = String(ptmNum);
-    
-    if (this.frizolData.data[ptmStr] && this.frizolData.data[ptmStr][limit]) {
-      console.log('getThicknessAndConsumption: exact match', { ptm: ptmStr, limit, data: this.frizolData.data[ptmStr][limit] });
-      return this.frizolData.data[ptmStr][limit];
+    if (material === 'sternfire') {
+      return this.getThicknessFromSternfire(ptmNum, fireResistanceLimit);
+    } else {
+      return this.getThicknessFromFrizol(ptmNum, fireResistanceLimit);
+    }
+  }
+
+  getThicknessFromFrizol(ptmNum, fireResistanceLimit) {
+    if (!this.frizolData || !this.frizolData.data) {
+      console.log('getThicknessFromFrizol: no frizol data');
+      return null;
     }
 
-    const ptmKeys = Object.keys(this.frizolData.data).map(k => ({ str: k, num: Number(k) })).sort((a, b) => a.num - b.num);
-    
-    let closestPtmStr = null;
-    let minDiff = Infinity;
+    const limit = fireResistanceLimit.replace('R', '');
+    const ptmKeys = Object.keys(this.frizolData.data)
+      .map(k => ({ str: k, num: Number(k) }))
+      .filter(k => Number.isFinite(k.num))
+      .sort((a, b) => b.num - a.num); // Сортируем по убыванию для поиска ближайшего нижнего
+
+    // Ищем ближайшее нижнее значение ПТМ (<= ptmNum)
+    let foundPtmStr = null;
     for (const { str, num } of ptmKeys) {
-      const diff = Math.abs(num - ptmNum);
-      if (diff < minDiff) {
-        minDiff = diff;
-        closestPtmStr = str;
+      if (num <= ptmNum) {
+        foundPtmStr = str;
+        break;
       }
     }
 
-    console.log('getThicknessAndConsumption: closest match', { 
-      requested: ptmNum, 
-      closest: closestPtmStr, 
-      diff: minDiff,
-      limit,
-      hasData: !!(closestPtmStr && this.frizolData.data[closestPtmStr] && this.frizolData.data[closestPtmStr][limit])
-    });
-
-    if (closestPtmStr && this.frizolData.data[closestPtmStr] && this.frizolData.data[closestPtmStr][limit]) {
-      console.log('getThicknessAndConsumption: returning', this.frizolData.data[closestPtmStr][limit]);
-      return this.frizolData.data[closestPtmStr][limit];
+    if (foundPtmStr && this.frizolData.data[foundPtmStr] && this.frizolData.data[foundPtmStr][limit]) {
+      const result = this.frizolData.data[foundPtmStr][limit];
+      console.log('getThicknessFromFrizol: found', { 
+        requested: ptmNum, 
+        found: foundPtmStr, 
+        limit, 
+        result 
+      });
+      return result;
     }
 
-    console.log('getThicknessAndConsumption: no data found');
+    console.log('getThicknessFromFrizol: no data found', { ptmNum, limit, foundPtmStr });
     return null;
+  }
+
+  getThicknessFromSternfire(ptmNum, fireResistanceLimit) {
+    if (!this.sternfireData || !Array.isArray(this.sternfireData)) {
+      console.log('getThicknessFromSternfire: no sternfire data');
+      return null;
+    }
+
+    // Сортируем по ПТМ по убыванию для поиска ближайшего нижнего
+    const sortedData = [...this.sternfireData]
+      .filter(item => item && typeof item.ПТМ === 'number')
+      .sort((a, b) => b.ПТМ - a.ПТМ);
+
+    // Ищем ближайшее нижнее значение ПТМ (<= ptmNum)
+    let foundItem = null;
+    for (const item of sortedData) {
+      if (item.ПТМ <= ptmNum) {
+        foundItem = item;
+        break;
+      }
+    }
+
+    if (!foundItem) {
+      console.log('getThicknessFromSternfire: no PTM found <=', ptmNum);
+      return null;
+    }
+
+    // Получаем значение толщины для выбранного предела огнестойкости
+    const thickness = foundItem[fireResistanceLimit];
+    
+    if (thickness === null || thickness === undefined) {
+      console.log('getThicknessFromSternfire: no thickness for limit', { 
+        ptm: foundItem.ПТМ, 
+        limit: fireResistanceLimit 
+      });
+      return null;
+    }
+
+    console.log('getThicknessFromSternfire: found', { 
+      requested: ptmNum, 
+      found: foundItem.ПТМ, 
+      limit: fireResistanceLimit,
+      thickness 
+    });
+
+    // Для Sternfire возвращаем только толщину (расход не указан в таблице)
+    return { thickness: Number(thickness), consumption: null };
   }
 
   getDejaVuFont() {

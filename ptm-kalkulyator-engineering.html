@@ -3,17 +3,30 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Калькулятор ПТМ + расход — инженерный обогрев</title>
+<title>Калькулятор ПТМ (приведенной толщины металла)</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <div class="wrap">
-  <h1>Калькулятор ПТМ + расход (инженерный периметр)</h1>
+  <h1>Калькулятор ПТМ (приведенной толщины металла)</h1>
   <div class="sub">Расчет приведенной толщины металла (ПТМ) и расхода огнезащитных материалов. Выберите профиль и укажите обогреваемые стороны, кликая по сегментам периметра на схеме. Обогреваемые стороны выделяются оранжевым цветом. Периметр P рассчитывается автоматически на основе выбранных сторон.</div>
 
   <div class="card">
     <div class="row">
+      <label>
+        <div class="lbl">Выбор материала</div>
+        <select id="materialSelect">
+          <option value="ograx">Огракс</option>
+          <option value="sternfire">Sternfire</option>
+        </select>
+      </label>
+      <label>
+        <div class="lbl">Система</div>
+        <select id="systemSelect">
+          <option value="">—</option>
+        </select>
+      </label>
       <label>
         <div class="lbl">Расход на 1 мм (кг/м²)</div>
         <input id="ratePerMm" type="number" step="0.001" min="0" value="1.00"/>
@@ -25,8 +38,8 @@
       <label>
         <div class="lbl">Ед. количества по умолчанию</div>
         <select id="defaultQtyUnit">
-          <option value="m" selected>метры (пог. м)</option>
-          <option value="t">тонны (т)</option>
+          <option value="m" selected>м²</option>
+          <option value="t">тн</option>
         </select>
       </label>
       <label>
@@ -66,10 +79,10 @@
             <th style="min-width:90px;"></th>
           </tr>
           <tr>
-            <th style="min-width:320px;">Профиль</th>
-            <th style="min-width:180px;">Обогрев (сегменты) / P</th>
-            <th style="min-width:320px;">Параметры</th>
-            <th style="min-width:200px;">Расчеты</th>
+            <th style="min-width:320px;">Элемент</th>
+            <th style="min-width:180px;">Выбор сторон обогрева</th>
+            <th style="min-width:320px;">Параметры Элемента</th>
+            <th style="min-width:200px;">Расчет материала</th>
             <th style="min-width:200px;">Результаты</th>
             <th style="min-width:90px;"></th>
           </tr>
