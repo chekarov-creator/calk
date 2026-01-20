@@ -1,25 +1,47 @@
-.row {
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+/* Settings Panel */
+.settings-panel {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.settings-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 18px;
   padding: 18px 2px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-light);
   margin-bottom: 18px;
 }
 
-.row:last-child {
+.settings-row:last-child {
   border-bottom: none;
   margin-bottom: 0;
 }
 
+/* Table Container */
+.table-container {
+  overflow-x: auto;
+  margin: 0 -22px;
+  padding: 0 22px;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
 @media (max-width: 1100px) {
-  .row {
-    grid-template-columns: 1fr 1fr;
+  .settings-row {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 680px) {
-  .row {
+  .settings-row {
     grid-template-columns: 1fr;
   }
 }

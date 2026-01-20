@@ -1,11 +1,19 @@
+/* ==========================================================================
+   Card Component
+   ========================================================================== */
+
 .card {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 22px;
   background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   margin-bottom: 20px;
 }
+
+/* ==========================================================================
+   Toolbar
+   ========================================================================== */
 
 .toolbar {
   display: flex;
@@ -14,15 +22,19 @@
   align-items: center;
   margin: 20px 0;
   padding: 18px 2px;
-  border-top: 1px solid #f0f0f0;
-  border-bottom: 1px solid #f0f0f0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
 }
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
 
 .btn {
   padding: 11px 21px;
   border-radius: 4px;
   border: 0;
-  background: var(--b);
+  background: var(--primary);
   color: #fff;
   cursor: pointer;
   font-weight: 500;
@@ -34,6 +46,27 @@
   background: #000;
 }
 
+.btn--primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: #000;
+}
+
+.btn--secondary {
+  border: 1px solid #d0d0d0;
+  background: #fff;
+  color: #333;
+}
+
+.btn--secondary:hover {
+  background: #f8f8f8;
+  border-color: #bbb;
+}
+
+/* Legacy class support */
 .btn.secondary {
   border: 1px solid #d0d0d0;
   background: #fff;
@@ -65,6 +98,112 @@
   background: #b71c1c;
 }
 
+/* ==========================================================================
+   Form Fields
+   ========================================================================== */
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-label {
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 7px;
+  padding-left: 1px;
+  font-weight: 500;
+  display: block;
+}
+
+/* Legacy class support */
+.lbl {
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 7px;
+  padding-left: 1px;
+  font-weight: 500;
+  display: block;
+}
+
+.field-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+select:focus,
+.field-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.1);
+}
+
+input[readonly] {
+  background: #f8f8f8;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.field--note {
+  justify-content: flex-start;
+}
+
+.field-note {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Legacy class support */
+.mini {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   Messages
+   ========================================================================== */
+
+.message {
+  font-size: 13px;
+  display: none;
+  margin-left: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+}
+
+.message--error {
+  color: #d32f2f;
+  background: #ffebee;
+  border-left: 3px solid #d32f2f;
+}
+
+.message--success {
+  color: var(--ok);
+  background: #e8f5e9;
+  border-left: 3px solid var(--ok);
+}
+
+/* Legacy class support */
 .err {
   color: #d32f2f;
   font-size: 13px;
@@ -87,38 +226,9 @@
   border-left: 3px solid var(--ok);
 }
 
-.lbl {
-  font-size: 12px;
-  color: #333;
-  margin-bottom: 7px;
-  padding-left: 1px;
-  font-weight: 500;
-  display: block;
-}
-
-input,
-select {
-  width: 100%;
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  box-sizing: border-box;
-  transition: border-color 0.2s ease;
-}
-
-input:focus,
-select:focus {
-  outline: none;
-  border-color: var(--b);
-  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.1);
-}
-
-input[readonly] {
-  background: #f8f8f8;
-  color: #666;
-  cursor: not-allowed;
-}
+/* ==========================================================================
+   Table Cell Components
+   ========================================================================== */
 
 .cell {
   display: grid;
@@ -139,24 +249,30 @@ input[readonly] {
 
 .param-label {
   font-size: 11px;
-  color: #666;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
-.mini {
-  font-size: 11px;
-  color: #666;
-  line-height: 1.25;
-}
+/* ==========================================================================
+   Heat Hint
+   ========================================================================== */
 
 .heat-hint {
   margin-top: 0;
   padding: 10px 12px;
   background: #f8f9fa;
   border-radius: 6px;
-  border-left: 3px solid #ff9800;
+  border-left: 3px solid var(--hot);
 }
 
+.heat-hint__title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 6px 0;
+}
+
+/* Legacy class support */
 .heat-hint-title {
   font-size: 11px;
   font-weight: 600;
@@ -164,6 +280,21 @@ input[readonly] {
   margin-bottom: 6px;
 }
 
+.heat-hint__content {
+  font-size: 10px;
+  color: #555;
+  line-height: 1.3;
+}
+
+.heat-hint__content p {
+  margin: 0 0 4px 0;
+}
+
+.heat-hint__content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Legacy class support */
 .heat-hint-content {
   font-size: 10px;
   color: #555;
@@ -178,16 +309,42 @@ input[readonly] {
   margin-bottom: 0;
 }
 
-.heat-hint-accent {
-  color: #ff9800;
+.heat-hint__accent {
+  color: var(--hot);
   font-weight: 600;
 }
 
+/* Legacy class support */
+.heat-hint-accent {
+  color: var(--hot);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Help Note
+   ========================================================================== */
+
+.help-note {
+  margin-top: 18px;
+  padding: 13px 17px;
+  background: #f8f9fa;
+  border-left: 3px solid var(--text-secondary);
+  color: #555;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.help-note strong {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Legacy class support */
 .note {
   margin-top: 18px;
   padding: 13px 17px;
   background: #f8f9fa;
-  border-left: 3px solid #666;
+  border-left: 3px solid var(--text-secondary);
   color: #555;
   font-size: 13px;
   line-height: 1.5;

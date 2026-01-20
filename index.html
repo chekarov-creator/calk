@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Калькулятор приведенной толщины металла (ПТМ) и расхода огнезащитных материалов">
+  <meta name="theme-color" content="#1a1a2e">
+  <title>Калькулятор ПТМ (приведенной толщины металла)</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="page-header">
+      <h1>Калькулятор ПТМ (приведенной толщины металла)</h1>
+      <p class="page-description">
+        Расчет приведенной толщины металла (ПТМ) и расхода огнезащитных материалов.
+        Выберите профиль и укажите обогреваемые стороны, кликая по сегментам периметра на схеме.
+        Обогреваемые стороны выделяются оранжевым цветом.
+        Периметр P рассчитывается автоматически на основе выбранных сторон.
+      </p>
+    </header>
+
+    <main>
+      <section class="card" aria-label="Настройки и расчеты">
+        <!-- Панель настроек материала -->
+        <fieldset class="settings-panel">
+          <legend class="visually-hidden">Настройки материала</legend>
+
+          <div class="settings-row">
+            <div class="field">
+              <label for="materialSelect" class="field-label">Выбор материала</label>
+              <select id="materialSelect" class="field-input">
+                <option value="ograx">Огракс</option>
+                <option value="frizol">Фризол</option>
+                <option value="sternfire">Sternfire</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="systemSelect" class="field-label">Система</label>
+              <select id="systemSelect" class="field-input">
+                <option value="">—</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="ratePerMm" class="field-label">Расход на 1 мм (кг/м²)</label>
+              <input
+                id="ratePerMm"
+                type="number"
+                class="field-input"
+                step="0.001"
+                min="0"
+                value="1.00"
+              >
+            </div>
+
+            <div class="field">
+              <label for="defaultThickness" class="field-label">Толщина по умолчанию (мм)</label>
+              <input
+                id="defaultThickness"
+                type="number"
+                class="field-input"
+                step="0.01"
+                min="0"
+                value="1.00"
+              >
+            </div>
+
+            <div class="field">
+              <label for="defaultQtyUnit" class="field-label">Ед. количества по умолчанию</label>
+              <select id="defaultQtyUnit" class="field-input">
+                <option value="m" selected>м²</option>
+                <option value="t">тн</option>
+              </select>
+            </div>
+
+            <div class="field field--note">
+              <span class="field-label">Примечание</span>
+              <p class="field-note">
+                CSV теперь скачивается в UTF-8 с BOM (Excel открывает без "крякозябр").
+                PDF использует встроенный шрифт с кириллицей.
+              </p>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Панель инструментов -->
+        <div class="toolbar" role="toolbar" aria-label="Действия">
+          <button id="btnAdd" type="button" class="btn btn--primary">
+            + Добавить строку
+          </button>
+          <button id="btnCsv" type="button" class="btn btn--secondary">
+            Экспорт CSV
+          </button>
+          <button id="btnPdf" type="button" class="btn btn--secondary">
+            Экспорт PDF
+          </button>
+          <button id="btnClear" type="button" class="btn btn--secondary">
+            Очистить
+          </button>
+          <output id="err" class="message message--error" aria-live="polite"></output>
+          <output id="ok" class="message message--success" aria-live="polite"></output>
+        </div>
+
+        <!-- Таблица расчетов -->
+        <div class="table-container">
+          <table class="calc-table" aria-label="Таблица расчетов ПТМ">
+            <thead>
+              <tr class="calc-table__header-hints">
+                <th class="col-element">
+                  <div class="heat-hint">
+                    <p class="heat-hint__title">Выбор обогрева</p>
+                    <div class="heat-hint__content">
+                      <p><span class="heat-hint__accent">Оранжевый = обогреваемая сторона</span></p>
+                      <p><strong>Кликните по сторонам для выбора</strong></p>
+                      <p>
+                        Обогреваемый периметр <strong>P</strong> рассчитывается автоматически.
+                        При необходимости можно ввести P вручную (будет иметь приоритет).
+                      </p>
+                    </div>
+                  </div>
+                </th>
+                <th class="col-heat-sides"></th>
+                <th class="col-params"></th>
+                <th class="col-material"></th>
+                <th class="col-results"></th>
+                <th class="col-actions"></th>
+              </tr>
+              <tr class="calc-table__header-titles">
+                <th class="col-element">Элемент</th>
+                <th class="col-heat-sides">Выбор сторон обогрева</th>
+                <th class="col-params">Параметры Элемента</th>
+                <th class="col-material">Расчет материала</th>
+                <th class="col-results">Результаты</th>
+                <th class="col-actions"></th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- Подсказка -->
+        <aside class="help-note">
+          <strong>Подсказка:</strong>
+          для профильной трубы и листа — клик по сторонам;
+          для трубы круглой — по дугам;
+          для двутавра/швеллера/уголка — клик по сегментам периметра.
+          Если нужно нестандартное примыкание — можно вручную задать P.
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <!-- Внешние библиотеки -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.5.31/dist/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.20.2/dist/xlsx.full.min.js"></script>
+
+  <!-- Приложение -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

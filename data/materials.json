@@ -1,0 +1,4378 @@
+{
+  "ograx": {
+    "id": "ograx",
+    "product": "Огракс",
+    "specifications": "",
+    "description": "Огнезащитное покрытие Огракс",
+    "note": "Данные вводятся вручную. Расход рассчитывается по полям «Расход на 1 мм» и «Толщина».",
+    "fireResistanceLimits": [],
+    "hasThickness": false,
+    "data": {}
+  },давай
+  "frizol": {
+    "id": "frizol",
+    "product": "Фризол",
+    "specifications": "ТУ 2313-008-88712501-11",
+    "description": "Табличное представление зависимости толщины и расхода огнезащитного покрытия «Фризол» от требуемой огнезащитной эффективности и приведенной толщины металла",
+    "note": "В таблице представлен теоретический расход огнезащитной краски «Фризол». При производстве работ по нанесению огнезащитной краски следует учитывать технологические потери, которые могут составлять от 5% до 40 % от теоретического расхода. Технологические потери зависят от типа нанесения (механизированный или ручной), квалификации персонала, доступности окрашиваемой поверхности конструкций и условий нанесения (большая высота, открытая площадка, большое количество конструкций с маленькой приведённой толщиной металла).",
+    "fireResistanceLimits": [
+      "15",
+      "30",
+      "45",
+      "60",
+      "90"
+    ],
+    "hasThickness": true,
+    "data": {
+      "2.0": {
+        "15": {
+          "thickness": 0.62,
+          "consumption": 0.89
+        },
+        "30": {
+          "thickness": 0.93,
+          "consumption": 1.32
+        },
+        "45": {
+          "thickness": 1.34,
+          "consumption": 1.91
+        },
+        "60": {
+          "thickness": 2.49,
+          "consumption": 3.56
+        }
+      },
+      "2.1": {
+        "15": {
+          "thickness": 0.6,
+          "consumption": 0.86
+        },
+        "30": {
+          "thickness": 0.9,
+          "consumption": 1.28
+        },
+        "45": {
+          "thickness": 1.3,
+          "consumption": 1.86
+        },
+        "60": {
+          "thickness": 2.41,
+          "consumption": 3.45
+        }
+      },
+      "2.2": {
+        "15": {
+          "thickness": 0.59,
+          "consumption": 0.84
+        },
+        "30": {
+          "thickness": 0.87,
+          "consumption": 1.25
+        },
+        "45": {
+          "thickness": 1.26,
+          "consumption": 1.8
+        },
+        "60": {
+          "thickness": 2.35,
+          "consumption": 3.35
+        }
+      },
+      "2.3": {
+        "15": {
+          "thickness": 0.57,
+          "consumption": 0.82
+        },
+        "30": {
+          "thickness": 0.85,
+          "consumption": 1.22
+        },
+        "45": {
+          "thickness": 1.23,
+          "consumption": 1.76
+        },
+        "60": {
+          "thickness": 2.28,
+          "consumption": 3.27
+        }
+      },
+      "2.4": {
+        "15": {
+          "thickness": 0.56,
+          "consumption": 0.8
+        },
+        "30": {
+          "thickness": 0.83,
+          "consumption": 1.18
+        },
+        "45": {
+          "thickness": 1.2,
+          "consumption": 1.71
+        },
+        "60": {
+          "thickness": 2.22,
+          "consumption": 3.18
+        }
+      },
+      "2.5": {
+        "15": {
+          "thickness": 0.54,
+          "consumption": 0.78
+        },
+        "30": {
+          "thickness": 0.81,
+          "consumption": 1.15
+        },
+        "45": {
+          "thickness": 1.17,
+          "consumption": 1.67
+        },
+        "60": {
+          "thickness": 2.17,
+          "consumption": 3.1
+        }
+      },
+      "2.6": {
+        "15": {
+          "thickness": 0.53,
+          "consumption": 0.76
+        },
+        "30": {
+          "thickness": 0.79,
+          "consumption": 1.13
+        },
+        "45": {
+          "thickness": 1.14,
+          "consumption": 1.63
+        },
+        "60": {
+          "thickness": 2.12,
+          "consumption": 3.03
+        }
+      },
+      "2.7": {
+        "15": {
+          "thickness": 0.52,
+          "consumption": 0.74
+        },
+        "30": {
+          "thickness": 0.77,
+          "consumption": 1.1
+        },
+        "45": {
+          "thickness": 1.11,
+          "consumption": 1.59
+        },
+        "60": {
+          "thickness": 2.07,
+          "consumption": 2.96
+        }
+      },
+      "2.8": {
+        "15": {
+          "thickness": 0.51,
+          "consumption": 0.72
+        },
+        "30": {
+          "thickness": 0.75,
+          "consumption": 1.08
+        },
+        "45": {
+          "thickness": 1.09,
+          "consumption": 1.56
+        },
+        "60": {
+          "thickness": 2.03,
+          "consumption": 2.9
+        }
+      },
+      "2.9": {
+        "15": {
+          "thickness": 0.5,
+          "consumption": 0.71
+        },
+        "30": {
+          "thickness": 0.74,
+          "consumption": 1.05
+        },
+        "45": {
+          "thickness": 1.07,
+          "consumption": 1.52
+        },
+        "60": {
+          "thickness": 1.98,
+          "consumption": 2.83
+        }
+      },
+      "3.0": {
+        "15": {
+          "thickness": 0.49,
+          "consumption": 0.69
+        },
+        "30": {
+          "thickness": 0.72,
+          "consumption": 1.03
+        },
+        "45": {
+          "thickness": 1.04,
+          "consumption": 1.49
+        },
+        "60": {
+          "thickness": 1.94,
+          "consumption": 2.78
+        }
+      },
+      "3.1": {
+        "15": {
+          "thickness": 0.48,
+          "consumption": 0.68
+        },
+        "30": {
+          "thickness": 0.71,
+          "consumption": 1.01
+        },
+        "45": {
+          "thickness": 1.02,
+          "consumption": 1.46
+        },
+        "60": {
+          "thickness": 1.9,
+          "consumption": 2.72
+        }
+      },
+      "3.2": {
+        "15": {
+          "thickness": 0.47,
+          "consumption": 0.67
+        },
+        "30": {
+          "thickness": 0.69,
+          "consumption": 0.99
+        },
+        "45": {
+          "thickness": 1,
+          "consumption": 1.44
+        },
+        "60": {
+          "thickness": 1.87,
+          "consumption": 2.67
+        }
+      },
+      "3.3": {
+        "15": {
+          "thickness": 0.46,
+          "consumption": 0.65
+        },
+        "30": {
+          "thickness": 0.68,
+          "consumption": 0.97
+        },
+        "45": {
+          "thickness": 0.99,
+          "consumption": 1.41
+        },
+        "60": {
+          "thickness": 1.83,
+          "consumption": 2.62
+        }
+      },
+      "3.4": {
+        "15": {
+          "thickness": 0.45,
+          "consumption": 0.64
+        },
+        "30": {
+          "thickness": 0.67,
+          "consumption": 0.96
+        },
+        "45": {
+          "thickness": 0.97,
+          "consumption": 1.38
+        },
+        "60": {
+          "thickness": 1.8,
+          "consumption": 2.57
+        }
+      },
+      "3.5": {
+        "15": {
+          "thickness": 0.44,
+          "consumption": 0.63
+        },
+        "30": {
+          "thickness": 0.65,
+          "consumption": 0.93
+        },
+        "45": {
+          "thickness": 0.95,
+          "consumption": 1.36
+        },
+        "60": {
+          "thickness": 1.75,
+          "consumption": 2.5
+        }
+      },
+      "3.6": {
+        "15": {
+          "thickness": 0.43,
+          "consumption": 0.62
+        },
+        "30": {
+          "thickness": 0.6,
+          "consumption": 0.86
+        },
+        "45": {
+          "thickness": 0.9,
+          "consumption": 1.29
+        },
+        "60": {
+          "thickness": 1.7,
+          "consumption": 2.43
+        }
+      },
+      "3.7": {
+        "15": {
+          "thickness": 0.43,
+          "consumption": 0.61
+        },
+        "30": {
+          "thickness": 0.55,
+          "consumption": 0.79
+        },
+        "45": {
+          "thickness": 0.85,
+          "consumption": 1.22
+        },
+        "60": {
+          "thickness": 1.65,
+          "consumption": 2.36
+        }
+      },
+      "3.8": {
+        "15": {
+          "thickness": 0.42,
+          "consumption": 0.6
+        },
+        "30": {
+          "thickness": 0.5,
+          "consumption": 0.72
+        },
+        "45": {
+          "thickness": 0.8,
+          "consumption": 1.14
+        },
+        "60": {
+          "thickness": 1.6,
+          "consumption": 2.29
+        }
+      },
+      "3.9": {
+        "15": {
+          "thickness": 0.41,
+          "consumption": 0.59
+        },
+        "30": {
+          "thickness": 0.5,
+          "consumption": 0.72
+        },
+        "45": {
+          "thickness": 0.75,
+          "consumption": 1.07
+        },
+        "60": {
+          "thickness": 1.55,
+          "consumption": 2.22
+        }
+      },
+      "4.0": {
+        "15": {
+          "thickness": 0.41,
+          "consumption": 0.58
+        },
+        "30": {
+          "thickness": 0.48,
+          "consumption": 0.68
+        },
+        "45": {
+          "thickness": 0.7,
+          "consumption": 1
+        },
+        "60": {
+          "thickness": 1.5,
+          "consumption": 2.15
+        }
+      },
+      "4.1": {
+        "15": {
+          "thickness": 0.4,
+          "consumption": 0.57
+        },
+        "30": {
+          "thickness": 0.47,
+          "consumption": 0.67
+        },
+        "45": {
+          "thickness": 0.69,
+          "consumption": 0.99
+        },
+        "60": {
+          "thickness": 1.45,
+          "consumption": 2.07
+        }
+      },
+      "4.2": {
+        "15": {
+          "thickness": 0.4,
+          "consumption": 0.57
+        },
+        "30": {
+          "thickness": 0.46,
+          "consumption": 0.66
+        },
+        "45": {
+          "thickness": 0.68,
+          "consumption": 0.98
+        },
+        "60": {
+          "thickness": 1.4,
+          "consumption": 2
+        }
+      },
+      "4.3": {
+        "15": {
+          "thickness": 0.39,
+          "consumption": 0.56
+        },
+        "30": {
+          "thickness": 0.46,
+          "consumption": 0.65
+        },
+        "45": {
+          "thickness": 0.67,
+          "consumption": 0.96
+        },
+        "60": {
+          "thickness": 1.35,
+          "consumption": 1.93
+        }
+      },
+      "4.4": {
+        "15": {
+          "thickness": 0.38,
+          "consumption": 0.55
+        },
+        "30": {
+          "thickness": 0.45,
+          "consumption": 0.64
+        },
+        "45": {
+          "thickness": 0.66,
+          "consumption": 0.95
+        },
+        "60": {
+          "thickness": 1.3,
+          "consumption": 1.86
+        }
+      },
+      "4.5": {
+        "15": {
+          "thickness": 0.38,
+          "consumption": 0.54
+        },
+        "30": {
+          "thickness": 0.44,
+          "consumption": 0.63
+        },
+        "45": {
+          "thickness": 0.66,
+          "consumption": 0.94
+        },
+        "60": {
+          "thickness": 1.25,
+          "consumption": 1.79
+        }
+      },
+      "4.6": {
+        "15": {
+          "thickness": 0.37,
+          "consumption": 0.53
+        },
+        "30": {
+          "thickness": 0.44,
+          "consumption": 0.63
+        },
+        "45": {
+          "thickness": 0.65,
+          "consumption": 0.93
+        },
+        "60": {
+          "thickness": 1.2,
+          "consumption": 1.72
+        }
+      },
+      "4.7": {
+        "15": {
+          "thickness": 0.37,
+          "consumption": 0.53
+        },
+        "30": {
+          "thickness": 0.43,
+          "consumption": 0.62
+        },
+        "45": {
+          "thickness": 0.64,
+          "consumption": 0.91
+        },
+        "60": {
+          "thickness": 1.15,
+          "consumption": 1.64
+        }
+      },
+      "4.8": {
+        "15": {
+          "thickness": 0.36,
+          "consumption": 0.52
+        },
+        "30": {
+          "thickness": 0.43,
+          "consumption": 0.61
+        },
+        "45": {
+          "thickness": 0.63,
+          "consumption": 0.9
+        },
+        "60": {
+          "thickness": 1.1,
+          "consumption": 1.57
+        }
+      },
+      "4.9": {
+        "15": {
+          "thickness": 0.36,
+          "consumption": 0.51
+        },
+        "30": {
+          "thickness": 0.42,
+          "consumption": 0.6
+        },
+        "45": {
+          "thickness": 0.62,
+          "consumption": 0.89
+        },
+        "60": {
+          "thickness": 1.05,
+          "consumption": 1.5
+        }
+      },
+      "5.0": {
+        "15": {
+          "thickness": 0.36,
+          "consumption": 0.51
+        },
+        "30": {
+          "thickness": 0.42,
+          "consumption": 0.6
+        },
+        "45": {
+          "thickness": 0.5,
+          "consumption": 0.72
+        },
+        "60": {
+          "thickness": 1,
+          "consumption": 1.43
+        }
+      },
+      "5.1": {
+        "15": {
+          "thickness": 0.35,
+          "consumption": 0.5
+        },
+        "30": {
+          "thickness": 0.41,
+          "consumption": 0.59
+        },
+        "45": {
+          "thickness": 0.5,
+          "consumption": 0.71
+        },
+        "60": {
+          "thickness": 0.95,
+          "consumption": 1.36
+        }
+      },
+      "5.2": {
+        "15": {
+          "thickness": 0.35,
+          "consumption": 0.5
+        },
+        "30": {
+          "thickness": 0.41,
+          "consumption": 0.58
+        },
+        "45": {
+          "thickness": 0.49,
+          "consumption": 0.7
+        },
+        "60": {
+          "thickness": 0.9,
+          "consumption": 1.29
+        }
+      },
+      "5.3": {
+        "15": {
+          "thickness": 0.34,
+          "consumption": 0.49
+        },
+        "30": {
+          "thickness": 0.4,
+          "consumption": 0.57
+        },
+        "45": {
+          "thickness": 0.49,
+          "consumption": 0.69
+        },
+        "60": {
+          "thickness": 0.85,
+          "consumption": 1.22
+        }
+      },
+      "5.4": {
+        "15": {
+          "thickness": 0.34,
+          "consumption": 0.48
+        },
+        "30": {
+          "thickness": 0.4,
+          "consumption": 0.57
+        },
+        "45": {
+          "thickness": 0.48,
+          "consumption": 0.69
+        },
+        "60": {
+          "thickness": 0.8,
+          "consumption": 1.14
+        }
+      },
+      "5.5": {
+        "15": {
+          "thickness": 0.34,
+          "consumption": 0.48
+        },
+        "30": {
+          "thickness": 0.39,
+          "consumption": 0.56
+        },
+        "45": {
+          "thickness": 0.47,
+          "consumption": 0.68
+        },
+        "60": {
+          "thickness": 0.7,
+          "consumption": 1
+        }
+      },
+      "5.6": {
+        "15": {
+          "thickness": 0.33,
+          "consumption": 0.47
+        },
+        "30": {
+          "thickness": 0.39,
+          "consumption": 0.56
+        },
+        "45": {
+          "thickness": 0.47,
+          "consumption": 0.67
+        },
+        "60": {
+          "thickness": 0.69,
+          "consumption": 0.99
+        }
+      },
+      "5.7": {
+        "15": {
+          "thickness": 0.33,
+          "consumption": 0.47
+        },
+        "30": {
+          "thickness": 0.38,
+          "consumption": 0.55
+        },
+        "45": {
+          "thickness": 0.46,
+          "consumption": 0.66
+        },
+        "60": {
+          "thickness": 0.68,
+          "consumption": 0.98
+        }
+      },
+      "5.8": {
+        "15": {
+          "thickness": 0.32,
+          "consumption": 0.46
+        },
+        "30": {
+          "thickness": 0.38,
+          "consumption": 0.54
+        },
+        "45": {
+          "thickness": 0.46,
+          "consumption": 0.66
+        },
+        "60": {
+          "thickness": 0.68,
+          "consumption": 0.97
+        },
+        "90": {
+          "thickness": 1.58,
+          "consumption": 2.26
+        }
+      },
+      "5.9": {
+        "15": {
+          "thickness": 0.32,
+          "consumption": 0.46
+        },
+        "30": {
+          "thickness": 0.38,
+          "consumption": 0.54
+        },
+        "45": {
+          "thickness": 0.45,
+          "consumption": 0.65
+        },
+        "60": {
+          "thickness": 0.67,
+          "consumption": 0.96
+        },
+        "90": {
+          "thickness": 1.56,
+          "consumption": 2.23
+        }
+      },
+      "6.0": {
+        "15": {
+          "thickness": 0.32,
+          "consumption": 0.45
+        },
+        "30": {
+          "thickness": 0.37,
+          "consumption": 0.53
+        },
+        "45": {
+          "thickness": 0.45,
+          "consumption": 0.64
+        },
+        "60": {
+          "thickness": 0.66,
+          "consumption": 0.95
+        },
+        "90": {
+          "thickness": 1.55,
+          "consumption": 2.21
+        }
+      },
+      "6.1": {
+        "15": {
+          "thickness": 0.31,
+          "consumption": 0.45
+        },
+        "30": {
+          "thickness": 0.37,
+          "consumption": 0.53
+        },
+        "45": {
+          "thickness": 0.45,
+          "consumption": 0.64
+        },
+        "60": {
+          "thickness": 0.66,
+          "consumption": 0.94
+        },
+        "90": {
+          "thickness": 1.53,
+          "consumption": 2.19
+        }
+      },
+      "6.2": {
+        "15": {
+          "thickness": 0.31,
+          "consumption": 0.45
+        },
+        "30": {
+          "thickness": 0.37,
+          "consumption": 0.52
+        },
+        "45": {
+          "thickness": 0.44,
+          "consumption": 0.63
+        },
+        "60": {
+          "thickness": 0.65,
+          "consumption": 0.93
+        },
+        "90": {
+          "thickness": 1.52,
+          "consumption": 2.17
+        }
+      },
+      "6.3": {
+        "15": {
+          "thickness": 0.31,
+          "consumption": 0.44
+        },
+        "30": {
+          "thickness": 0.36,
+          "consumption": 0.52
+        },
+        "45": {
+          "thickness": 0.44,
+          "consumption": 0.62
+        },
+        "60": {
+          "thickness": 0.64,
+          "consumption": 0.92
+        },
+        "90": {
+          "thickness": 1.5,
+          "consumption": 2.15
+        }
+      },
+      "6.4": {
+        "15": {
+          "thickness": 0.31,
+          "consumption": 0.44
+        },
+        "30": {
+          "thickness": 0.36,
+          "consumption": 0.51
+        },
+        "45": {
+          "thickness": 0.43,
+          "consumption": 0.62
+        },
+        "60": {
+          "thickness": 0.64,
+          "consumption": 0.91
+        },
+        "90": {
+          "thickness": 1.49,
+          "consumption": 2.13
+        }
+      },
+      "6.5": {
+        "15": {
+          "thickness": 0.3,
+          "consumption": 0.43
+        },
+        "30": {
+          "thickness": 0.35,
+          "consumption": 0.51
+        },
+        "45": {
+          "thickness": 0.43,
+          "consumption": 0.61
+        },
+        "60": {
+          "thickness": 0.63,
+          "consumption": 0.9
+        },
+        "90": {
+          "thickness": 1.47,
+          "consumption": 2.11
+        }
+      },
+      "6.6": {
+        "15": {
+          "thickness": 0.3,
+          "consumption": 0.43
+        },
+        "30": {
+          "thickness": 0.35,
+          "consumption": 0.5
+        },
+        "45": {
+          "thickness": 0.42,
+          "consumption": 0.61
+        },
+        "60": {
+          "thickness": 0.63,
+          "consumption": 0.89
+        },
+        "90": {
+          "thickness": 1.46,
+          "consumption": 2.09
+        }
+      },
+      "6.7": {
+        "15": {
+          "thickness": 0.3,
+          "consumption": 0.43
+        },
+        "30": {
+          "thickness": 0.35,
+          "consumption": 0.5
+        },
+        "45": {
+          "thickness": 0.42,
+          "consumption": 0.6
+        },
+        "60": {
+          "thickness": 0.62,
+          "consumption": 0.89
+        },
+        "90": {
+          "thickness": 1.45,
+          "consumption": 2.07
+        }
+      },
+      "6.8": {
+        "15": {
+          "thickness": 0.29,
+          "consumption": 0.42
+        },
+        "30": {
+          "thickness": 0.35,
+          "consumption": 0.49
+        },
+        "45": {
+          "thickness": 0.42,
+          "consumption": 0.6
+        },
+        "60": {
+          "thickness": 0.61,
+          "consumption": 0.88
+        },
+        "90": {
+          "thickness": 1.43,
+          "consumption": 2.05
+        }
+      },
+      "6.9": {
+        "15": {
+          "thickness": 0.29,
+          "consumption": 0.42
+        },
+        "30": {
+          "thickness": 0.34,
+          "consumption": 0.49
+        },
+        "45": {
+          "thickness": 0.41,
+          "consumption": 0.59
+        },
+        "60": {
+          "thickness": 0.61,
+          "consumption": 0.87
+        },
+        "90": {
+          "thickness": 1.42,
+          "consumption": 2.03
+        }
+      },
+      "7.0": {
+        "15": {
+          "thickness": 0.29,
+          "consumption": 0.41
+        },
+        "30": {
+          "thickness": 0.34,
+          "consumption": 0.48
+        },
+        "45": {
+          "thickness": 0.41,
+          "consumption": 0.59
+        },
+        "60": {
+          "thickness": 0.6,
+          "consumption": 0.86
+        },
+        "90": {
+          "thickness": 1.41,
+          "consumption": 2.01
+        }
+      },
+      "7.1": {
+        "15": {
+          "thickness": 0.29,
+          "consumption": 0.41
+        },
+        "30": {
+          "thickness": 0.34,
+          "consumption": 0.48
+        },
+        "45": {
+          "thickness": 0.41,
+          "consumption": 0.58
+        },
+        "60": {
+          "thickness": 0.6,
+          "consumption": 0.86
+        },
+        "90": {
+          "thickness": 1.4,
+          "consumption": 2
+        }
+      },
+      "7.2": {
+        "15": {
+          "thickness": 0.28,
+          "consumption": 0.41
+        },
+        "30": {
+          "thickness": 0.33,
+          "consumption": 0.48
+        },
+        "45": {
+          "thickness": 0.4,
+          "consumption": 0.58
+        },
+        "60": {
+          "thickness": 0.59,
+          "consumption": 0.85
+        },
+        "90": {
+          "thickness": 1.38,
+          "consumption": 1.98
+        }
+      },
+      "7.3": {
+        "15": {
+          "thickness": 0.28,
+          "consumption": 0.4
+        },
+        "30": {
+          "thickness": 0.33,
+          "consumption": 0.47
+        },
+        "45": {
+          "thickness": 0.4,
+          "consumption": 0.57
+        },
+        "60": {
+          "thickness": 0.59,
+          "consumption": 0.84
+        },
+        "90": {
+          "thickness": 1.37,
+          "consumption": 1.96
+        }
+      },
+      "7.4": {
+        "15": {
+          "thickness": 0.28,
+          "consumption": 0.4
+        },
+        "30": {
+          "thickness": 0.33,
+          "consumption": 0.47
+        },
+        "45": {
+          "thickness": 0.4,
+          "consumption": 0.57
+        },
+        "60": {
+          "thickness": 0.58,
+          "consumption": 0.83
+        },
+        "90": {
+          "thickness": 1.36,
+          "consumption": 1.95
+        }
+      },
+      "7.5": {
+        "15": {
+          "thickness": 0.28,
+          "consumption": 0.4
+        },
+        "30": {
+          "thickness": 0.33,
+          "consumption": 0.46
+        },
+        "45": {
+          "thickness": 0.39,
+          "consumption": 0.56
+        },
+        "60": {
+          "thickness": 0.58,
+          "consumption": 0.83
+        },
+        "90": {
+          "thickness": 1.35,
+          "consumption": 1.93
+        }
+      },
+      "7.6": {
+        "15": {
+          "thickness": 0.28,
+          "consumption": 0.39
+        },
+        "30": {
+          "thickness": 0.32,
+          "consumption": 0.46
+        },
+        "45": {
+          "thickness": 0.39,
+          "consumption": 0.56
+        },
+        "60": {
+          "thickness": 0.57,
+          "consumption": 0.82
+        },
+        "90": {
+          "thickness": 1.34,
+          "consumption": 1.91
+        }
+      },
+      "7.7": {
+        "15": {
+          "thickness": 0.27,
+          "consumption": 0.39
+        },
+        "30": {
+          "thickness": 0.32,
+          "consumption": 0.46
+        },
+        "45": {
+          "thickness": 0.39,
+          "consumption": 0.55
+        },
+        "60": {
+          "thickness": 0.57,
+          "consumption": 0.81
+        },
+        "90": {
+          "thickness": 1.33,
+          "consumption": 1.9
+        }
+      },
+      "7.8": {
+        "15": {
+          "thickness": 0.27,
+          "consumption": 0.39
+        },
+        "30": {
+          "thickness": 0.32,
+          "consumption": 0.45
+        },
+        "45": {
+          "thickness": 0.38,
+          "consumption": 0.55
+        },
+        "60": {
+          "thickness": 0.57,
+          "consumption": 0.81
+        },
+        "90": {
+          "thickness": 1.32,
+          "consumption": 1.88
+        }
+      },
+      "7.9": {
+        "15": {
+          "thickness": 0.27,
+          "consumption": 0.38
+        },
+        "30": {
+          "thickness": 0.31,
+          "consumption": 0.45
+        },
+        "45": {
+          "thickness": 0.38,
+          "consumption": 0.54
+        },
+        "60": {
+          "thickness": 0.56,
+          "consumption": 0.8
+        },
+        "90": {
+          "thickness": 1.31,
+          "consumption": 1.87
+        }
+      },
+      "8.0": {
+        "15": {
+          "thickness": 0.27,
+          "consumption": 0.38
+        },
+        "30": {
+          "thickness": 0.31,
+          "consumption": 0.45
+        },
+        "45": {
+          "thickness": 0.38,
+          "consumption": 0.54
+        },
+        "60": {
+          "thickness": 0.56,
+          "consumption": 0.8
+        },
+        "90": {
+          "thickness": 1.3,
+          "consumption": 1.85
+        }
+      },
+      "8.1": {
+        "30": {
+          "thickness": 0.31,
+          "consumption": 0.44
+        },
+        "45": {
+          "thickness": 0.37,
+          "consumption": 0.54
+        },
+        "60": {
+          "thickness": 0.55,
+          "consumption": 0.79
+        },
+        "90": {
+          "thickness": 1.29,
+          "consumption": 1.84
+        }
+      },
+      "8.2": {
+        "30": {
+          "thickness": 0.31,
+          "consumption": 0.44
+        },
+        "45": {
+          "thickness": 0.37,
+          "consumption": 0.53
+        },
+        "60": {
+          "thickness": 0.55,
+          "consumption": 0.78
+        },
+        "90": {
+          "thickness": 1.28,
+          "consumption": 1.83
+        }
+      },
+      "8.3": {
+        "30": {
+          "thickness": 0.31,
+          "consumption": 0.44
+        },
+        "45": {
+          "thickness": 0.37,
+          "consumption": 0.53
+        },
+        "60": {
+          "thickness": 0.54,
+          "consumption": 0.78
+        },
+        "90": {
+          "thickness": 1.27,
+          "consumption": 1.81
+        }
+      },
+      "8.4": {
+        "30": {
+          "thickness": 0.3,
+          "consumption": 0.43
+        },
+        "45": {
+          "thickness": 0.37,
+          "consumption": 0.52
+        },
+        "60": {
+          "thickness": 0.54,
+          "consumption": 0.77
+        },
+        "90": {
+          "thickness": 1.26,
+          "consumption": 1.8
+        }
+      },
+      "8.5": {
+        "30": {
+          "thickness": 0.3,
+          "consumption": 0.43
+        },
+        "45": {
+          "thickness": 0.36,
+          "consumption": 0.52
+        },
+        "60": {
+          "thickness": 0.54,
+          "consumption": 0.77
+        },
+        "90": {
+          "thickness": 1.25,
+          "consumption": 1.79
+        }
+      },
+      "8.6": {
+        "30": {
+          "thickness": 0.3,
+          "consumption": 0.43
+        },
+        "45": {
+          "thickness": 0.36,
+          "consumption": 0.52
+        },
+        "60": {
+          "thickness": 0.53,
+          "consumption": 0.76
+        },
+        "90": {
+          "thickness": 1.24,
+          "consumption": 1.77
+        }
+      },
+      "8.7": {
+        "30": {
+          "thickness": 0.3,
+          "consumption": 0.42
+        },
+        "45": {
+          "thickness": 0.36,
+          "consumption": 0.51
+        },
+        "60": {
+          "thickness": 0.53,
+          "consumption": 0.76
+        },
+        "90": {
+          "thickness": 1.23,
+          "consumption": 1.76
+        }
+      },
+      "8.8": {
+        "30": {
+          "thickness": 0.29,
+          "consumption": 0.42
+        },
+        "45": {
+          "thickness": 0.36,
+          "consumption": 0.51
+        },
+        "60": {
+          "thickness": 0.53,
+          "consumption": 0.75
+        },
+        "90": {
+          "thickness": 1.22,
+          "consumption": 1.75
+        }
+      },
+      "8.9": {
+        "30": {
+          "thickness": 0.29,
+          "consumption": 0.42
+        },
+        "45": {
+          "thickness": 0.35,
+          "consumption": 0.51
+        },
+        "60": {
+          "thickness": 0.52,
+          "consumption": 0.75
+        },
+        "90": {
+          "thickness": 1.22,
+          "consumption": 1.74
+        }
+      },
+      "9.0": {
+        "30": {
+          "thickness": 0.29,
+          "consumption": 0.42
+        },
+        "45": {
+          "thickness": 0.35,
+          "consumption": 0.5
+        },
+        "60": {
+          "thickness": 0.52,
+          "consumption": 0.74
+        },
+        "90": {
+          "thickness": 1.21,
+          "consumption": 1.73
+        }
+      },
+      "9.1": {
+        "30": {
+          "thickness": 0.29,
+          "consumption": 0.41
+        },
+        "45": {
+          "thickness": 0.35,
+          "consumption": 0.5
+        },
+        "60": {
+          "thickness": 0.51,
+          "consumption": 0.74
+        },
+        "90": {
+          "thickness": 1.2,
+          "consumption": 1.71
+        }
+      },
+      "9.2": {
+        "30": {
+          "thickness": 0.29,
+          "consumption": 0.41
+        },
+        "45": {
+          "thickness": 0.35,
+          "consumption": 0.5
+        },
+        "60": {
+          "thickness": 0.51,
+          "consumption": 0.73
+        },
+        "90": {
+          "thickness": 1.19,
+          "consumption": 1.7
+        }
+      },
+      "9.3": {
+        "30": {
+          "thickness": 0.29,
+          "consumption": 0.41
+        },
+        "45": {
+          "thickness": 0.34,
+          "consumption": 0.49
+        },
+        "60": {
+          "thickness": 0.51,
+          "consumption": 0.73
+        },
+        "90": {
+          "thickness": 1.18,
+          "consumption": 1.69
+        }
+      },
+      "9.4": {
+        "30": {
+          "thickness": 0.28,
+          "consumption": 0.41
+        },
+        "45": {
+          "thickness": 0.34,
+          "consumption": 0.49
+        },
+        "60": {
+          "thickness": 0.5,
+          "consumption": 0.72
+        },
+        "90": {
+          "thickness": 1.18,
+          "consumption": 1.68
+        }
+      },
+      "9.5": {
+        "30": {
+          "thickness": 0.28,
+          "consumption": 0.4
+        },
+        "45": {
+          "thickness": 0.34,
+          "consumption": 0.49
+        },
+        "60": {
+          "thickness": 0.5,
+          "consumption": 0.72
+        },
+        "90": {
+          "thickness": 1.17,
+          "consumption": 1.67
+        }
+      },
+      "9.6": {
+        "30": {
+          "thickness": 0.28,
+          "consumption": 0.4
+        },
+        "45": {
+          "thickness": 0.34,
+          "consumption": 0.48
+        },
+        "60": {
+          "thickness": 0.5,
+          "consumption": 0.71
+        },
+        "90": {
+          "thickness": 1.16,
+          "consumption": 1.66
+        }
+      },
+      "9.7": {
+        "30": {
+          "thickness": 0.28,
+          "consumption": 0.4
+        },
+        "45": {
+          "thickness": 0.34,
+          "consumption": 0.48
+        },
+        "60": {
+          "thickness": 0.49,
+          "consumption": 0.71
+        },
+        "90": {
+          "thickness": 1.15,
+          "consumption": 1.65
+        }
+      },
+      "9.8": {
+        "30": {
+          "thickness": 0.28,
+          "consumption": 0.39
+        },
+        "45": {
+          "thickness": 0.33,
+          "consumption": 0.48
+        },
+        "60": {
+          "thickness": 0.49,
+          "consumption": 0.7
+        },
+        "90": {
+          "thickness": 1.15,
+          "consumption": 1.64
+        }
+      },
+      "9.9": {
+        "30": {
+          "thickness": 0.27,
+          "consumption": 0.39
+        },
+        "45": {
+          "thickness": 0.33,
+          "consumption": 0.47
+        },
+        "60": {
+          "thickness": 0.49,
+          "consumption": 0.7
+        },
+        "90": {
+          "thickness": 1.14,
+          "consumption": 1.63
+        }
+      },
+      "10.0": {
+        "30": {
+          "thickness": 0.27,
+          "consumption": 0.39
+        },
+        "45": {
+          "thickness": 0.33,
+          "consumption": 0.47
+        },
+        "60": {
+          "thickness": 0.49,
+          "consumption": 0.69
+        },
+        "90": {
+          "thickness": 1.13,
+          "consumption": 1.62
+        }
+      },
+      "10.1": {
+        "30": {
+          "thickness": 0.27,
+          "consumption": 0.39
+        },
+        "45": {
+          "thickness": 0.33,
+          "consumption": 0.47
+        },
+        "60": {
+          "thickness": 0.48,
+          "consumption": 0.69
+        },
+        "90": {
+          "thickness": 1.13,
+          "consumption": 1.61
+        }
+      },
+      "10.2": {
+        "30": {
+          "thickness": 0.27,
+          "consumption": 0.39
+        },
+        "45": {
+          "thickness": 0.33,
+          "consumption": 0.47
+        },
+        "60": {
+          "thickness": 0.48,
+          "consumption": 0.69
+        },
+        "90": {
+          "thickness": 1.12,
+          "consumption": 1.6
+        }
+      },
+      "10.3": {
+        "30": {
+          "thickness": 0.27,
+          "consumption": 0.38
+        },
+        "45": {
+          "thickness": 0.32,
+          "consumption": 0.46
+        },
+        "60": {
+          "thickness": 0.48,
+          "consumption": 0.68
+        },
+        "90": {
+          "thickness": 1.11,
+          "consumption": 1.59
+        }
+      },
+      "10.4": {
+        "30": {
+          "thickness": 0.27,
+          "consumption": 0.38
+        },
+        "45": {
+          "thickness": 0.32,
+          "consumption": 0.46
+        },
+        "60": {
+          "thickness": 0.47,
+          "consumption": 0.68
+        },
+        "90": {
+          "thickness": 1.11,
+          "consumption": 1.58
+        }
+      },
+      "10.5": {
+        "30": {
+          "thickness": 0.26,
+          "consumption": 0.38
+        },
+        "45": {
+          "thickness": 0.32,
+          "consumption": 0.46
+        },
+        "60": {
+          "thickness": 0.47,
+          "consumption": 0.67
+        },
+        "90": {
+          "thickness": 1.1,
+          "consumption": 1.57
+        }
+      },
+      "10.6": {
+        "30": {
+          "thickness": 0.26,
+          "consumption": 0.38
+        },
+        "45": {
+          "thickness": 0.32,
+          "consumption": 0.45
+        },
+        "60": {
+          "thickness": 0.47,
+          "consumption": 0.67
+        },
+        "90": {
+          "thickness": 1.09,
+          "consumption": 1.56
+        }
+      },
+      "10.7": {
+        "30": {
+          "thickness": 0.26,
+          "consumption": 0.37
+        },
+        "45": {
+          "thickness": 0.32,
+          "consumption": 0.45
+        },
+        "60": {
+          "thickness": 0.47,
+          "consumption": 0.67
+        },
+        "90": {
+          "thickness": 1.09,
+          "consumption": 1.55
+        }
+      },
+      "10.8": {
+        "30": {
+          "thickness": 0.26,
+          "consumption": 0.37
+        },
+        "45": {
+          "thickness": 0.31,
+          "consumption": 0.45
+        },
+        "60": {
+          "thickness": 0.46,
+          "consumption": 0.66
+        },
+        "90": {
+          "thickness": 1.08,
+          "consumption": 1.54
+        }
+      },
+      "10.9": {
+        "30": {
+          "thickness": 0.26,
+          "consumption": 0.37
+        },
+        "45": {
+          "thickness": 0.31,
+          "consumption": 0.45
+        },
+        "60": {
+          "thickness": 0.46,
+          "consumption": 0.66
+        },
+        "90": {
+          "thickness": 1.07,
+          "consumption": 1.54
+        }
+      },
+      "11.0": {
+        "30": {
+          "thickness": 0.26,
+          "consumption": 0.37
+        },
+        "45": {
+          "thickness": 0.31,
+          "consumption": 0.44
+        },
+        "60": {
+          "thickness": 0.46,
+          "consumption": 0.66
+        },
+        "90": {
+          "thickness": 1.07,
+          "consumption": 1.53
+        }
+      },
+      "11.1": {
+        "30": {
+          "thickness": 0.26,
+          "consumption": 0.37
+        },
+        "45": {
+          "thickness": 0.31,
+          "consumption": 0.44
+        },
+        "60": {
+          "thickness": 0.46,
+          "consumption": 0.65
+        },
+        "90": {
+          "thickness": 1.06,
+          "consumption": 1.52
+        }
+      },
+      "11.2": {
+        "30": {
+          "thickness": 0.25,
+          "consumption": 0.36
+        },
+        "45": {
+          "thickness": 0.31,
+          "consumption": 0.44
+        },
+        "60": {
+          "thickness": 0.45,
+          "consumption": 0.65
+        },
+        "90": {
+          "thickness": 1.06,
+          "consumption": 1.51
+        }
+      },
+      "11.3": {
+        "30": {
+          "thickness": 0.25,
+          "consumption": 0.36
+        },
+        "45": {
+          "thickness": 0.31,
+          "consumption": 0.44
+        },
+        "60": {
+          "thickness": 0.45,
+          "consumption": 0.64
+        },
+        "90": {
+          "thickness": 1.05,
+          "consumption": 1.5
+        }
+      },
+      "11.4": {
+        "30": {
+          "thickness": 0.25,
+          "consumption": 0.36
+        },
+        "45": {
+          "thickness": 0.3,
+          "consumption": 0.43
+        },
+        "60": {
+          "thickness": 0.45,
+          "consumption": 0.64
+        },
+        "90": {
+          "thickness": 1.05,
+          "consumption": 1.49
+        }
+      },
+      "11.5": {
+        "30": {
+          "thickness": 0.25,
+          "consumption": 0.36
+        },
+        "45": {
+          "thickness": 0.3,
+          "consumption": 0.43
+        },
+        "60": {
+          "thickness": 0.45,
+          "consumption": 0.64
+        },
+        "90": {
+          "thickness": 1.04,
+          "consumption": 1.49
+        }
+      },
+      "11.6": {
+        "30": {
+          "thickness": 0.25,
+          "consumption": 0.36
+        },
+        "45": {
+          "thickness": 0.3,
+          "consumption": 0.43
+        },
+        "60": {
+          "thickness": 0.44,
+          "consumption": 0.63
+        },
+        "90": {
+          "thickness": 1.03,
+          "consumption": 1.48
+        }
+      },
+      "11.7": {
+        "30": {
+          "thickness": 0.25,
+          "consumption": 0.35
+        },
+        "45": {
+          "thickness": 0.3,
+          "consumption": 0.43
+        },
+        "60": {
+          "thickness": 0.44,
+          "consumption": 0.63
+        },
+        "90": {
+          "thickness": 1.03,
+          "consumption": 1.47
+        }
+      },
+      "11.8": {
+        "30": {
+          "thickness": 0.25,
+          "consumption": 0.35
+        },
+        "45": {
+          "thickness": 0.3,
+          "consumption": 0.43
+        },
+        "60": {
+          "thickness": 0.44,
+          "consumption": 0.63
+        },
+        "90": {
+          "thickness": 1.02,
+          "consumption": 1.46
+        }
+      },
+      "11.9": {
+        "30": {
+          "thickness": 0.25,
+          "consumption": 0.35
+        },
+        "45": {
+          "thickness": 0.3,
+          "consumption": 0.42
+        },
+        "60": {
+          "thickness": 0.44,
+          "consumption": 0.62
+        },
+        "90": {
+          "thickness": 1.02,
+          "consumption": 1.46
+        }
+      },
+      "12.0": {
+        "30": {
+          "thickness": 0.24,
+          "consumption": 0.35
+        },
+        "45": {
+          "thickness": 0.29,
+          "consumption": 0.42
+        },
+        "60": {
+          "thickness": 0.43,
+          "consumption": 0.62
+        },
+        "90": {
+          "thickness": 1.01,
+          "consumption": 1.45
+        }
+      },
+      "12.1": {
+        "30": {
+          "thickness": 0.24,
+          "consumption": 0.35
+        },
+        "45": {
+          "thickness": 0.29,
+          "consumption": 0.42
+        },
+        "60": {
+          "thickness": 0.43,
+          "consumption": 0.62
+        },
+        "90": {
+          "thickness": 1.01,
+          "consumption": 1.44
+        }
+      },
+      "12.2": {
+        "30": {
+          "thickness": 0.24,
+          "consumption": 0.35
+        },
+        "45": {
+          "thickness": 0.29,
+          "consumption": 0.42
+        },
+        "60": {
+          "thickness": 0.43,
+          "consumption": 0.62
+        },
+        "90": {
+          "thickness": 1,
+          "consumption": 1.43
+        }
+      },
+      "12.3": {
+        "30": {
+          "thickness": 0.24,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.29,
+          "consumption": 0.42
+        },
+        "60": {
+          "thickness": 0.43,
+          "consumption": 0.61
+        },
+        "90": {
+          "thickness": 1,
+          "consumption": 1.43
+        }
+      },
+      "12.4": {
+        "30": {
+          "thickness": 0.24,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.29,
+          "consumption": 0.41
+        },
+        "60": {
+          "thickness": 0.43,
+          "consumption": 0.61
+        },
+        "90": {
+          "thickness": 0.99,
+          "consumption": 1.42
+        }
+      },
+      "12.5": {
+        "30": {
+          "thickness": 0.24,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.29,
+          "consumption": 0.41
+        },
+        "60": {
+          "thickness": 0.42,
+          "consumption": 0.61
+        },
+        "90": {
+          "thickness": 0.99,
+          "consumption": 1.41
+        }
+      },
+      "12.6": {
+        "30": {
+          "thickness": 0.24,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.29,
+          "consumption": 0.41
+        },
+        "60": {
+          "thickness": 0.42,
+          "consumption": 0.6
+        },
+        "90": {
+          "thickness": 0.98,
+          "consumption": 1.41
+        }
+      },
+      "12.7": {
+        "30": {
+          "thickness": 0.24,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.28,
+          "consumption": 0.41
+        },
+        "60": {
+          "thickness": 0.42,
+          "consumption": 0.6
+        },
+        "90": {
+          "thickness": 0.98,
+          "consumption": 1.4
+        }
+      },
+      "12.8": {
+        "30": {
+          "thickness": 0.23,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.28,
+          "consumption": 0.41
+        },
+        "60": {
+          "thickness": 0.42,
+          "consumption": 0.6
+        },
+        "90": {
+          "thickness": 0.97,
+          "consumption": 1.39
+        }
+      },
+      "12.9": {
+        "30": {
+          "thickness": 0.23,
+          "consumption": 0.33
+        },
+        "45": {
+          "thickness": 0.28,
+          "consumption": 0.4
+        },
+        "60": {
+          "thickness": 0.42,
+          "consumption": 0.59
+        },
+        "90": {
+          "thickness": 0.97,
+          "consumption": 1.39
+        }
+      },
+      "13.0": {
+        "30": {
+          "thickness": 0.23,
+          "consumption": 0.33
+        },
+        "45": {
+          "thickness": 0.28,
+          "consumption": 0.4
+        },
+        "60": {
+          "thickness": 0.41,
+          "consumption": 0.59
+        },
+        "90": {
+          "thickness": 0.96,
+          "consumption": 1.38
+        }
+      },
+      "13.1": {
+        "30": {
+          "thickness": 0.23,
+          "consumption": 0.33
+        },
+        "45": {
+          "thickness": 0.28,
+          "consumption": 0.4
+        },
+        "60": {
+          "thickness": 0.41,
+          "consumption": 0.59
+        },
+        "90": {
+          "thickness": 0.96,
+          "consumption": 1.37
+        }
+      },
+      "13.2": {
+        "30": {
+          "thickness": 0.23,
+          "consumption": 0.33
+        },
+        "45": {
+          "thickness": 0.28,
+          "consumption": 0.4
+        },
+        "60": {
+          "thickness": 0.41,
+          "consumption": 0.59
+        },
+        "90": {
+          "thickness": 0.96,
+          "consumption": 1.37
+        }
+      },
+      "13.3": {
+        "30": {
+          "thickness": 0.23,
+          "consumption": 0.33
+        },
+        "45": {
+          "thickness": 0.28,
+          "consumption": 0.4
+        },
+        "60": {
+          "thickness": 0.41,
+          "consumption": 0.58
+        },
+        "90": {
+          "thickness": 0.95,
+          "consumption": 1.36
+        }
+      },
+      "13.4": {
+        "30": {
+          "thickness": 0.23,
+          "consumption": 0.33
+        },
+        "45": {
+          "thickness": 0.28,
+          "consumption": 0.39
+        },
+        "60": {
+          "thickness": 0.41,
+          "consumption": 0.58
+        },
+        "90": {
+          "thickness": 0.95,
+          "consumption": 1.35
+        }
+      },
+      "13.5": {
+        "30": {
+          "thickness": 0.23,
+          "consumption": 0.32
+        },
+        "45": {
+          "thickness": 0.27,
+          "consumption": 0.39
+        },
+        "60": {
+          "thickness": 0.4,
+          "consumption": 0.58
+        },
+        "90": {
+          "thickness": 0.94,
+          "consumption": 1.35
+        }
+      },
+      "13.6": {
+        "30": {
+          "thickness": 0.23,
+          "consumption": 0.32
+        },
+        "45": {
+          "thickness": 0.27,
+          "consumption": 0.39
+        },
+        "60": {
+          "thickness": 0.4,
+          "consumption": 0.58
+        },
+        "90": {
+          "thickness": 0.94,
+          "consumption": 1.34
+        }
+      },
+      "13.7": {
+        "30": {
+          "thickness": 0.23,
+          "consumption": 0.32
+        },
+        "45": {
+          "thickness": 0.27,
+          "consumption": 0.39
+        },
+        "60": {
+          "thickness": 0.4,
+          "consumption": 0.57
+        },
+        "90": {
+          "thickness": 0.93,
+          "consumption": 1.34
+        }
+      },
+      "13.8": {
+        "30": {
+          "thickness": 0.22,
+          "consumption": 0.32
+        },
+        "45": {
+          "thickness": 0.27,
+          "consumption": 0.39
+        },
+        "60": {
+          "thickness": 0.4,
+          "consumption": 0.57
+        },
+        "90": {
+          "thickness": 0.93,
+          "consumption": 1.33
+        }
+      },
+      "13.9": {
+        "30": {
+          "thickness": 0.22,
+          "consumption": 0.32
+        },
+        "45": {
+          "thickness": 0.27,
+          "consumption": 0.39
+        },
+        "60": {
+          "thickness": 0.4,
+          "consumption": 0.57
+        },
+        "90": {
+          "thickness": 0.93,
+          "consumption": 1.32
+        }
+      },
+      "14.0": {
+        "30": {
+          "thickness": 0.22,
+          "consumption": 0.32
+        },
+        "45": {
+          "thickness": 0.27,
+          "consumption": 0.38
+        },
+        "60": {
+          "thickness": 0.4,
+          "consumption": 0.57
+        },
+        "90": {
+          "thickness": 0.92,
+          "consumption": 1.32
+        }
+      },
+      "14.1": {
+        "30": {
+          "thickness": 0.22,
+          "consumption": 0.32
+        },
+        "45": {
+          "thickness": 0.27,
+          "consumption": 0.38
+        },
+        "60": {
+          "thickness": 0.39,
+          "consumption": 0.56
+        },
+        "90": {
+          "thickness": 0.92,
+          "consumption": 1.31
+        }
+      },
+      "14.2": {
+        "30": {
+          "thickness": 0.22,
+          "consumption": 0.31
+        },
+        "45": {
+          "thickness": 0.27,
+          "consumption": 0.38
+        },
+        "60": {
+          "thickness": 0.39,
+          "consumption": 0.56
+        },
+        "90": {
+          "thickness": 0.91,
+          "consumption": 1.31
+        }
+      },
+      "14.3": {
+        "30": {
+          "thickness": 0.22,
+          "consumption": 0.31
+        },
+        "45": {
+          "thickness": 0.26,
+          "consumption": 0.38
+        },
+        "60": {
+          "thickness": 0.39,
+          "consumption": 0.56
+        },
+        "90": {
+          "thickness": 0.91,
+          "consumption": 1.3
+        }
+      },
+      "14.4": {
+        "30": {
+          "thickness": 0.22,
+          "consumption": 0.31
+        },
+        "45": {
+          "thickness": 0.26,
+          "consumption": 0.38
+        },
+        "60": {
+          "thickness": 0.39,
+          "consumption": 0.56
+        },
+        "90": {
+          "thickness": 0.91,
+          "consumption": 1.3
+        }
+      },
+      "14.5": {
+        "30": {
+          "thickness": 0.22,
+          "consumption": 0.31
+        },
+        "45": {
+          "thickness": 0.26,
+          "consumption": 0.38
+        },
+        "60": {
+          "thickness": 0.39,
+          "consumption": 0.55
+        },
+        "90": {
+          "thickness": 0.9,
+          "consumption": 1.29
+        }
+      },
+      "14.6": {
+        "30": {
+          "thickness": 0.22,
+          "consumption": 0.31
+        },
+        "45": {
+          "thickness": 0.26,
+          "consumption": 0.37
+        },
+        "60": {
+          "thickness": 0.39,
+          "consumption": 0.55
+        },
+        "90": {
+          "thickness": 0.9,
+          "consumption": 1.29
+        }
+      },
+      "14.7": {
+        "30": {
+          "thickness": 0.22,
+          "consumption": 0.31
+        },
+        "45": {
+          "thickness": 0.26,
+          "consumption": 0.37
+        },
+        "60": {
+          "thickness": 0.38,
+          "consumption": 0.55
+        },
+        "90": {
+          "thickness": 0.89,
+          "consumption": 1.28
+        }
+      },
+      "14.8": {
+        "30": {
+          "thickness": 0.21,
+          "consumption": 0.31
+        },
+        "45": {
+          "thickness": 0.26,
+          "consumption": 0.37
+        },
+        "60": {
+          "thickness": 0.38,
+          "consumption": 0.55
+        },
+        "90": {
+          "thickness": 0.89,
+          "consumption": 1.27
+        }
+      },
+      "14.9": {
+        "30": {
+          "thickness": 0.21,
+          "consumption": 0.31
+        },
+        "45": {
+          "thickness": 0.26,
+          "consumption": 0.37
+        },
+        "60": {
+          "thickness": 0.38,
+          "consumption": 0.54
+        },
+        "90": {
+          "thickness": 0.89,
+          "consumption": 1.27
+        }
+      },
+      "15.0": {
+        "30": {
+          "thickness": 0.21,
+          "consumption": 0.3
+        },
+        "45": {
+          "thickness": 0.26,
+          "consumption": 0.37
+        },
+        "60": {
+          "thickness": 0.38,
+          "consumption": 0.54
+        },
+        "90": {
+          "thickness": 0.88,
+          "consumption": 1.26
+        }
+      },
+      "15.1": {
+        "30": {
+          "thickness": 0.21,
+          "consumption": 0.3
+        },
+        "45": {
+          "thickness": 0.26,
+          "consumption": 0.37
+        },
+        "60": {
+          "thickness": 0.38,
+          "consumption": 0.54
+        },
+        "90": {
+          "thickness": 0.88,
+          "consumption": 1.26
+        }
+      },
+      "15.2": {
+        "30": {
+          "thickness": 0.21,
+          "consumption": 0.3
+        },
+        "45": {
+          "thickness": 0.26,
+          "consumption": 0.36
+        },
+        "60": {
+          "thickness": 0.38,
+          "consumption": 0.54
+        },
+        "90": {
+          "thickness": 0.88,
+          "consumption": 1.25
+        }
+      },
+      "15.3": {
+        "30": {
+          "thickness": 0.21,
+          "consumption": 0.3
+        },
+        "45": {
+          "thickness": 0.25,
+          "consumption": 0.36
+        },
+        "60": {
+          "thickness": 0.37,
+          "consumption": 0.54
+        },
+        "90": {
+          "thickness": 0.87,
+          "consumption": 1.25
+        }
+      },
+      "15.4": {
+        "30": {
+          "thickness": 0.21,
+          "consumption": 0.3
+        },
+        "45": {
+          "thickness": 0.25,
+          "consumption": 0.36
+        },
+        "60": {
+          "thickness": 0.37,
+          "consumption": 0.53
+        },
+        "90": {
+          "thickness": 0.87,
+          "consumption": 1.24
+        }
+      },
+      "15.5": {
+        "30": {
+          "thickness": 0.21,
+          "consumption": 0.3
+        },
+        "45": {
+          "thickness": 0.25,
+          "consumption": 0.36
+        },
+        "60": {
+          "thickness": 0.37,
+          "consumption": 0.53
+        },
+        "90": {
+          "thickness": 0.87,
+          "consumption": 1.24
+        }
+      },
+      "15.6": {
+        "30": {
+          "thickness": 0.21,
+          "consumption": 0.3
+        },
+        "45": {
+          "thickness": 0.25,
+          "consumption": 0.36
+        },
+        "60": {
+          "thickness": 0.37,
+          "consumption": 0.53
+        },
+        "90": {
+          "thickness": 0.86,
+          "consumption": 1.23
+        }
+      }
+    }
+  },
+  "sternfire": {
+    "id": "sternfire",
+    "product": "Sternfire",
+    "specifications": "",
+    "description": "Огнезащитное покрытие Sternfire",
+    "note": "Расход рассчитывается по формуле: толщина (мм) × 1.7",
+    "fireResistanceLimits": [
+      "15",
+      "45",
+      "60",
+      "90",
+      "90к",
+      "120к"
+    ],
+    "hasThickness": true,
+    "consumptionRate": 1.7,
+    "data": {
+      "1.5": {
+        "15": {
+          "thickness": 0.33,
+          "consumption": 0.561
+        },
+        "120к": {
+          "thickness": 3.89,
+          "consumption": 6.613
+        }
+      },
+      "1.6": {
+        "15": {
+          "thickness": 0.32,
+          "consumption": 0.544
+        },
+        "120к": {
+          "thickness": 3.88,
+          "consumption": 6.596
+        }
+      },
+      "1.7": {
+        "15": {
+          "thickness": 0.32,
+          "consumption": 0.544
+        },
+        "120к": {
+          "thickness": 3.87,
+          "consumption": 6.579
+        }
+      },
+      "1.8": {
+        "15": {
+          "thickness": 0.31,
+          "consumption": 0.527
+        },
+        "120к": {
+          "thickness": 3.86,
+          "consumption": 6.562
+        }
+      },
+      "1.9": {
+        "15": {
+          "thickness": 0.3,
+          "consumption": 0.51
+        },
+        "120к": {
+          "thickness": 3.85,
+          "consumption": 6.545
+        }
+      },
+      "2.0": {
+        "15": {
+          "thickness": 0.3,
+          "consumption": 0.51
+        },
+        "120к": {
+          "thickness": 3.84,
+          "consumption": 6.528
+        }
+      },
+      "2.1": {
+        "15": {
+          "thickness": 0.29,
+          "consumption": 0.493
+        },
+        "120к": {
+          "thickness": 3.83,
+          "consumption": 6.511
+        }
+      },
+      "2.2": {
+        "15": {
+          "thickness": 0.28,
+          "consumption": 0.476
+        },
+        "120к": {
+          "thickness": 3.82,
+          "consumption": 6.494
+        }
+      },
+      "2.3": {
+        "15": {
+          "thickness": 0.27,
+          "consumption": 0.459
+        },
+        "120к": {
+          "thickness": 3.81,
+          "consumption": 6.477
+        }
+      },
+      "2.4": {
+        "15": {
+          "thickness": 0.27,
+          "consumption": 0.459
+        },
+        "120к": {
+          "thickness": 3.8,
+          "consumption": 6.46
+        }
+      },
+      "2.5": {
+        "15": {
+          "thickness": 0.26,
+          "consumption": 0.442
+        },
+        "45": {
+          "thickness": 0.85,
+          "consumption": 1.445
+        },
+        "60": {
+          "thickness": 1.29,
+          "consumption": 2.193
+        },
+        "90": {
+          "thickness": 2.59,
+          "consumption": 4.403
+        },
+        "120к": {
+          "thickness": 3.79,
+          "consumption": 6.443
+        }
+      },
+      "2.6": {
+        "15": {
+          "thickness": 0.25,
+          "consumption": 0.425
+        },
+        "45": {
+          "thickness": 0.83,
+          "consumption": 1.411
+        },
+        "60": {
+          "thickness": 1.27,
+          "consumption": 2.159
+        },
+        "90": {
+          "thickness": 2.58,
+          "consumption": 4.386
+        },
+        "120к": {
+          "thickness": 3.78,
+          "consumption": 6.426
+        }
+      },
+      "2.7": {
+        "15": {
+          "thickness": 0.25,
+          "consumption": 0.425
+        },
+        "45": {
+          "thickness": 0.81,
+          "consumption": 1.377
+        },
+        "60": {
+          "thickness": 1.25,
+          "consumption": 2.125
+        },
+        "90": {
+          "thickness": 2.57,
+          "consumption": 4.369
+        },
+        "120к": {
+          "thickness": 3.77,
+          "consumption": 6.409
+        }
+      },
+      "2.8": {
+        "15": {
+          "thickness": 0.24,
+          "consumption": 0.408
+        },
+        "45": {
+          "thickness": 0.8,
+          "consumption": 1.36
+        },
+        "60": {
+          "thickness": 1.22,
+          "consumption": 2.074
+        },
+        "90": {
+          "thickness": 2.56,
+          "consumption": 4.352
+        },
+        "120к": {
+          "thickness": 3.76,
+          "consumption": 6.392
+        }
+      },
+      "2.9": {
+        "15": {
+          "thickness": 0.23,
+          "consumption": 0.391
+        },
+        "45": {
+          "thickness": 0.78,
+          "consumption": 1.326
+        },
+        "60": {
+          "thickness": 1.19,
+          "consumption": 2.023
+        },
+        "90": {
+          "thickness": 2.55,
+          "consumption": 4.335
+        },
+        "120к": {
+          "thickness": 3.75,
+          "consumption": 6.375
+        }
+      },
+      "3.0": {
+        "15": {
+          "thickness": 0.23,
+          "consumption": 0.391
+        },
+        "45": {
+          "thickness": 0.76,
+          "consumption": 1.292
+        },
+        "60": {
+          "thickness": 1.17,
+          "consumption": 1.989
+        },
+        "90": {
+          "thickness": 2.54,
+          "consumption": 4.318
+        },
+        "120к": {
+          "thickness": 3.74,
+          "consumption": 6.358
+        }
+      },
+      "3.1": {
+        "15": {
+          "thickness": 0.22,
+          "consumption": 0.374
+        },
+        "45": {
+          "thickness": 0.74,
+          "consumption": 1.258
+        },
+        "60": {
+          "thickness": 1.15,
+          "consumption": 1.955
+        },
+        "90": {
+          "thickness": 2.53,
+          "consumption": 4.301
+        },
+        "120к": {
+          "thickness": 3.73,
+          "consumption": 6.341
+        }
+      },
+      "3.2": {
+        "15": {
+          "thickness": 0.21,
+          "consumption": 0.357
+        },
+        "45": {
+          "thickness": 0.73,
+          "consumption": 1.241
+        },
+        "60": {
+          "thickness": 1.12,
+          "consumption": 1.904
+        },
+        "90": {
+          "thickness": 2.52,
+          "consumption": 4.284
+        },
+        "120к": {
+          "thickness": 3.72,
+          "consumption": 6.324
+        }
+      },
+      "3.3": {
+        "15": {
+          "thickness": 0.2,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.71,
+          "consumption": 1.207
+        },
+        "60": {
+          "thickness": 1.1,
+          "consumption": 1.87
+        },
+        "90": {
+          "thickness": 2.51,
+          "consumption": 4.267
+        },
+        "120к": {
+          "thickness": 3.71,
+          "consumption": 6.307
+        }
+      },
+      "3.4": {
+        "15": {
+          "thickness": 0.2,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.7,
+          "consumption": 1.19
+        },
+        "60": {
+          "thickness": 1.08,
+          "consumption": 1.836
+        },
+        "90": {
+          "thickness": 2.5,
+          "consumption": 4.25
+        },
+        "120к": {
+          "thickness": 3.7,
+          "consumption": 6.29
+        }
+      },
+      "3.5": {
+        "15": {
+          "thickness": 0.2,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.68,
+          "consumption": 1.156
+        },
+        "60": {
+          "thickness": 1.06,
+          "consumption": 1.802
+        },
+        "90": {
+          "thickness": 2.47,
+          "consumption": 4.199
+        },
+        "120к": {
+          "thickness": 3.69,
+          "consumption": 6.273
+        }
+      },
+      "3.6": {
+        "15": {
+          "thickness": 0.2,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.67,
+          "consumption": 1.139
+        },
+        "60": {
+          "thickness": 1.03,
+          "consumption": 1.751
+        },
+        "90": {
+          "thickness": 2.44,
+          "consumption": 4.148
+        },
+        "120к": {
+          "thickness": 3.68,
+          "consumption": 6.256
+        }
+      },
+      "3.7": {
+        "15": {
+          "thickness": 0.2,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.66,
+          "consumption": 1.122
+        },
+        "60": {
+          "thickness": 1.01,
+          "consumption": 1.717
+        },
+        "90": {
+          "thickness": 2.4,
+          "consumption": 4.08
+        },
+        "120к": {
+          "thickness": 3.67,
+          "consumption": 6.239
+        }
+      },
+      "3.8": {
+        "15": {
+          "thickness": 0.2,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.64,
+          "consumption": 1.088
+        },
+        "60": {
+          "thickness": 0.99,
+          "consumption": 1.683
+        },
+        "90": {
+          "thickness": 2.36,
+          "consumption": 4.012
+        },
+        "120к": {
+          "thickness": 3.66,
+          "consumption": 6.222
+        }
+      },
+      "3.9": {
+        "15": {
+          "thickness": 0.2,
+          "consumption": 0.34
+        },
+        "45": {
+          "thickness": 0.63,
+          "consumption": 1.071
+        },
+        "60": {
+          "thickness": 0.98,
+          "consumption": 1.666
+        },
+        "90": {
+          "thickness": 2.29,
+          "consumption": 3.893
+        },
+        "120к": {
+          "thickness": 3.65,
+          "consumption": 6.205
+        }
+      },
+      "4.0": {
+        "45": {
+          "thickness": 0.62,
+          "consumption": 1.054
+        },
+        "60": {
+          "thickness": 0.96,
+          "consumption": 1.632
+        },
+        "90": {
+          "thickness": 2.22,
+          "consumption": 3.774
+        },
+        "120к": {
+          "thickness": 3.63,
+          "consumption": 6.171
+        }
+      },
+      "4.1": {
+        "45": {
+          "thickness": 0.6,
+          "consumption": 1.02
+        },
+        "60": {
+          "thickness": 0.94,
+          "consumption": 1.598
+        },
+        "90": {
+          "thickness": 2.15,
+          "consumption": 3.655
+        },
+        "120к": {
+          "thickness": 3.61,
+          "consumption": 6.137
+        }
+      },
+      "4.2": {
+        "45": {
+          "thickness": 0.59,
+          "consumption": 1.003
+        },
+        "60": {
+          "thickness": 0.92,
+          "consumption": 1.564
+        },
+        "90": {
+          "thickness": 2.08,
+          "consumption": 3.536
+        },
+        "120к": {
+          "thickness": 3.59,
+          "consumption": 6.103
+        }
+      },
+      "4.3": {
+        "45": {
+          "thickness": 0.58,
+          "consumption": 0.986
+        },
+        "60": {
+          "thickness": 0.9,
+          "consumption": 1.53
+        },
+        "90": {
+          "thickness": 2.01,
+          "consumption": 3.417
+        },
+        "120к": {
+          "thickness": 3.57,
+          "consumption": 6.069
+        }
+      },
+      "4.4": {
+        "45": {
+          "thickness": 0.57,
+          "consumption": 0.969
+        },
+        "60": {
+          "thickness": 0.89,
+          "consumption": 1.513
+        },
+        "90": {
+          "thickness": 1.94,
+          "consumption": 3.298
+        },
+        "120к": {
+          "thickness": 3.55,
+          "consumption": 6.035
+        }
+      },
+      "4.5": {
+        "45": {
+          "thickness": 0.56,
+          "consumption": 0.952
+        },
+        "60": {
+          "thickness": 0.87,
+          "consumption": 1.479
+        },
+        "90": {
+          "thickness": 1.87,
+          "consumption": 3.179
+        },
+        "120к": {
+          "thickness": 3.53,
+          "consumption": 6.001
+        }
+      },
+      "4.6": {
+        "45": {
+          "thickness": 0.55,
+          "consumption": 0.935
+        },
+        "60": {
+          "thickness": 0.85,
+          "consumption": 1.445
+        },
+        "90": {
+          "thickness": 1.8,
+          "consumption": 3.06
+        },
+        "120к": {
+          "thickness": 3.51,
+          "consumption": 5.967
+        }
+      },
+      "4.7": {
+        "45": {
+          "thickness": 0.54,
+          "consumption": 0.918
+        },
+        "60": {
+          "thickness": 0.84,
+          "consumption": 1.428
+        },
+        "90": {
+          "thickness": 1.73,
+          "consumption": 2.941
+        },
+        "120к": {
+          "thickness": 3.49,
+          "consumption": 5.933
+        }
+      },
+      "4.8": {
+        "45": {
+          "thickness": 0.53,
+          "consumption": 0.901
+        },
+        "60": {
+          "thickness": 0.82,
+          "consumption": 1.394
+        },
+        "90": {
+          "thickness": 1.66,
+          "consumption": 2.822
+        },
+        "120к": {
+          "thickness": 3.47,
+          "consumption": 5.899
+        }
+      },
+      "4.9": {
+        "45": {
+          "thickness": 0.52,
+          "consumption": 0.884
+        },
+        "60": {
+          "thickness": 0.81,
+          "consumption": 1.377
+        },
+        "90": {
+          "thickness": 1.59,
+          "consumption": 2.703
+        },
+        "120к": {
+          "thickness": 3.45,
+          "consumption": 5.865
+        }
+      },
+      "5.0": {
+        "45": {
+          "thickness": 0.51,
+          "consumption": 0.867
+        },
+        "60": {
+          "thickness": 0.79,
+          "consumption": 1.343
+        },
+        "90": {
+          "thickness": 1.52,
+          "consumption": 2.584
+        },
+        "120к": {
+          "thickness": 3.43,
+          "consumption": 5.831
+        }
+      },
+      "5.1": {
+        "45": {
+          "thickness": 0.5,
+          "consumption": 0.85
+        },
+        "60": {
+          "thickness": 0.78,
+          "consumption": 1.326
+        },
+        "90": {
+          "thickness": 1.45,
+          "consumption": 2.465
+        },
+        "120к": {
+          "thickness": 3.41,
+          "consumption": 5.797
+        }
+      },
+      "5.2": {
+        "45": {
+          "thickness": 0.49,
+          "consumption": 0.833
+        },
+        "60": {
+          "thickness": 0.76,
+          "consumption": 1.292
+        },
+        "90": {
+          "thickness": 1.38,
+          "consumption": 2.346
+        },
+        "120к": {
+          "thickness": 3.39,
+          "consumption": 5.763
+        }
+      },
+      "5.3": {
+        "45": {
+          "thickness": 0.48,
+          "consumption": 0.816
+        },
+        "60": {
+          "thickness": 0.75,
+          "consumption": 1.275
+        },
+        "90": {
+          "thickness": 1.33,
+          "consumption": 2.261
+        },
+        "120к": {
+          "thickness": 3.38,
+          "consumption": 5.746
+        }
+      },
+      "5.4": {
+        "45": {
+          "thickness": 0.47,
+          "consumption": 0.799
+        },
+        "60": {
+          "thickness": 0.74,
+          "consumption": 1.258
+        },
+        "90": {
+          "thickness": 1.26,
+          "consumption": 2.142
+        },
+        "120к": {
+          "thickness": 3.37,
+          "consumption": 5.729
+        }
+      },
+      "5.5": {
+        "45": {
+          "thickness": 0.46,
+          "consumption": 0.782
+        },
+        "60": {
+          "thickness": 0.72,
+          "consumption": 1.224
+        },
+        "90": {
+          "thickness": 1.19,
+          "consumption": 2.023
+        },
+        "120к": {
+          "thickness": 3.36,
+          "consumption": 5.712
+        }
+      },
+      "5.6": {
+        "45": {
+          "thickness": 0.45,
+          "consumption": 0.765
+        },
+        "60": {
+          "thickness": 0.71,
+          "consumption": 1.207
+        },
+        "90": {
+          "thickness": 1.14,
+          "consumption": 1.938
+        },
+        "120к": {
+          "thickness": 3.35,
+          "consumption": 5.695
+        }
+      },
+      "5.7": {
+        "45": {
+          "thickness": 0.44,
+          "consumption": 0.748
+        },
+        "60": {
+          "thickness": 0.7,
+          "consumption": 1.19
+        },
+        "90": {
+          "thickness": 1.09,
+          "consumption": 1.853
+        },
+        "120к": {
+          "thickness": 3.34,
+          "consumption": 5.678
+        }
+      },
+      "5.8": {
+        "45": {
+          "thickness": 0.43,
+          "consumption": 0.731
+        },
+        "60": {
+          "thickness": 0.68,
+          "consumption": 1.156
+        },
+        "90к": {
+          "thickness": 3.17,
+          "consumption": 5.389
+        },
+        "120к": {
+          "thickness": 3.33,
+          "consumption": 5.661
+        }
+      },
+      "5.9": {
+        "45": {
+          "thickness": 0.42,
+          "consumption": 0.714
+        },
+        "60": {
+          "thickness": 0.67,
+          "consumption": 1.139
+        },
+        "90к": {
+          "thickness": 3.16,
+          "consumption": 5.372
+        },
+        "120к": {
+          "thickness": 3.32,
+          "consumption": 5.644
+        }
+      },
+      "6.0": {
+        "45": {
+          "thickness": 0.41,
+          "consumption": 0.697
+        },
+        "60": {
+          "thickness": 0.66,
+          "consumption": 1.122
+        },
+        "90к": {
+          "thickness": 3.15,
+          "consumption": 5.355
+        },
+        "120к": {
+          "thickness": 3.3,
+          "consumption": 5.61
+        }
+      },
+      "6.1": {
+        "45": {
+          "thickness": 0.41,
+          "consumption": 0.697
+        },
+        "60": {
+          "thickness": 0.65,
+          "consumption": 1.105
+        },
+        "90к": {
+          "thickness": 3.14,
+          "consumption": 5.338
+        },
+        "120к": {
+          "thickness": 3.28,
+          "consumption": 5.576
+        }
+      },
+      "6.2": {
+        "45": {
+          "thickness": 0.4,
+          "consumption": 0.68
+        },
+        "60": {
+          "thickness": 0.63,
+          "consumption": 1.071
+        },
+        "90к": {
+          "thickness": 3.13,
+          "consumption": 5.321
+        },
+        "120к": {
+          "thickness": 3.27,
+          "consumption": 5.559
+        }
+      },
+      "6.3": {
+        "45": {
+          "thickness": 0.39,
+          "consumption": 0.663
+        },
+        "60": {
+          "thickness": 0.62,
+          "consumption": 1.054
+        },
+        "90к": {
+          "thickness": 3.12,
+          "consumption": 5.304
+        },
+        "120к": {
+          "thickness": 3.25,
+          "consumption": 5.525
+        }
+      },
+      "6.4": {
+        "45": {
+          "thickness": 0.38,
+          "consumption": 0.646
+        },
+        "60": {
+          "thickness": 0.61,
+          "consumption": 1.037
+        },
+        "90к": {
+          "thickness": 3.11,
+          "consumption": 5.287
+        },
+        "120к": {
+          "thickness": 3.23,
+          "consumption": 5.491
+        }
+      },
+      "6.5": {
+        "45": {
+          "thickness": 0.37,
+          "consumption": 0.629
+        },
+        "60": {
+          "thickness": 0.6,
+          "consumption": 1.02
+        },
+        "90к": {
+          "thickness": 3.1,
+          "consumption": 5.27
+        },
+        "120к": {
+          "thickness": 3.22,
+          "consumption": 5.474
+        }
+      },
+      "6.6": {
+        "45": {
+          "thickness": 0.37,
+          "consumption": 0.629
+        },
+        "60": {
+          "thickness": 0.59,
+          "consumption": 1.003
+        },
+        "90к": {
+          "thickness": 3.09,
+          "consumption": 5.253
+        },
+        "120к": {
+          "thickness": 3.21,
+          "consumption": 5.457
+        }
+      },
+      "6.7": {
+        "45": {
+          "thickness": 0.36,
+          "consumption": 0.612
+        },
+        "60": {
+          "thickness": 0.58,
+          "consumption": 0.986
+        },
+        "90к": {
+          "thickness": 3.08,
+          "consumption": 5.236
+        },
+        "120к": {
+          "thickness": 3.2,
+          "consumption": 5.44
+        }
+      },
+      "6.8": {
+        "45": {
+          "thickness": 0.35,
+          "consumption": 0.595
+        },
+        "60": {
+          "thickness": 0.57,
+          "consumption": 0.969
+        },
+        "90к": {
+          "thickness": 3.07,
+          "consumption": 5.219
+        },
+        "120к": {
+          "thickness": 3.19,
+          "consumption": 5.423
+        }
+      },
+      "6.9": {
+        "45": {
+          "thickness": 0.34,
+          "consumption": 0.578
+        },
+        "60": {
+          "thickness": 0.55,
+          "consumption": 0.935
+        },
+        "90к": {
+          "thickness": 3.06,
+          "consumption": 5.202
+        },
+        "120к": {
+          "thickness": 3.18,
+          "consumption": 5.406
+        }
+      },
+      "7.0": {
+        "45": {
+          "thickness": 0.34,
+          "consumption": 0.578
+        },
+        "60": {
+          "thickness": 0.54,
+          "consumption": 0.918
+        },
+        "90к": {
+          "thickness": 3.05,
+          "consumption": 5.185
+        },
+        "120к": {
+          "thickness": 3.17,
+          "consumption": 5.389
+        }
+      },
+      "7.1": {
+        "45": {
+          "thickness": 0.33,
+          "consumption": 0.561
+        },
+        "60": {
+          "thickness": 0.53,
+          "consumption": 0.901
+        },
+        "90к": {
+          "thickness": 3.04,
+          "consumption": 5.168
+        },
+        "120к": {
+          "thickness": 3.16,
+          "consumption": 5.372
+        }
+      },
+      "7.2": {
+        "45": {
+          "thickness": 0.32,
+          "consumption": 0.544
+        },
+        "60": {
+          "thickness": 0.52,
+          "consumption": 0.884
+        },
+        "90к": {
+          "thickness": 3.03,
+          "consumption": 5.151
+        },
+        "120к": {
+          "thickness": 3.15,
+          "consumption": 5.355
+        }
+      },
+      "7.3": {
+        "45": {
+          "thickness": 0.32,
+          "consumption": 0.544
+        },
+        "60": {
+          "thickness": 0.51,
+          "consumption": 0.867
+        },
+        "90к": {
+          "thickness": 3.02,
+          "consumption": 5.134
+        },
+        "120к": {
+          "thickness": 3.14,
+          "consumption": 5.338
+        }
+      },
+      "7.4": {
+        "45": {
+          "thickness": 0.31,
+          "consumption": 0.527
+        },
+        "60": {
+          "thickness": 0.5,
+          "consumption": 0.85
+        },
+        "90к": {
+          "thickness": 3.01,
+          "consumption": 5.117
+        },
+        "120к": {
+          "thickness": 3.13,
+          "consumption": 5.321
+        }
+      },
+      "7.5": {
+        "45": {
+          "thickness": 0.3,
+          "consumption": 0.51
+        },
+        "60": {
+          "thickness": 0.49,
+          "consumption": 0.833
+        },
+        "90к": {
+          "thickness": 3,
+          "consumption": 5.1
+        },
+        "120к": {
+          "thickness": 3.12,
+          "consumption": 5.304
+        }
+      },
+      "7.6": {
+        "45": {
+          "thickness": 0.3,
+          "consumption": 0.51
+        },
+        "60": {
+          "thickness": 0.48,
+          "consumption": 0.816
+        },
+        "90к": {
+          "thickness": 2.99,
+          "consumption": 5.083
+        },
+        "120к": {
+          "thickness": 3.11,
+          "consumption": 5.287
+        }
+      },
+      "7.7": {
+        "45": {
+          "thickness": 0.29,
+          "consumption": 0.493
+        },
+        "60": {
+          "thickness": 0.47,
+          "consumption": 0.799
+        },
+        "90к": {
+          "thickness": 2.98,
+          "consumption": 5.066
+        },
+        "120к": {
+          "thickness": 3.1,
+          "consumption": 5.27
+        }
+      },
+      "7.8": {
+        "45": {
+          "thickness": 0.28,
+          "consumption": 0.476
+        },
+        "60": {
+          "thickness": 0.46,
+          "consumption": 0.782
+        },
+        "90к": {
+          "thickness": 2.97,
+          "consumption": 5.049
+        },
+        "120к": {
+          "thickness": 3.09,
+          "consumption": 5.253
+        }
+      },
+      "7.9": {
+        "45": {
+          "thickness": 0.28,
+          "consumption": 0.476
+        },
+        "60": {
+          "thickness": 0.45,
+          "consumption": 0.765
+        },
+        "90к": {
+          "thickness": 2.96,
+          "consumption": 5.032
+        },
+        "120к": {
+          "thickness": 3.08,
+          "consumption": 5.236
+        }
+      },
+      "8.0": {
+        "45": {
+          "thickness": 0.27,
+          "consumption": 0.459
+        },
+        "60": {
+          "thickness": 0.45,
+          "consumption": 0.765
+        },
+        "90к": {
+          "thickness": 2.95,
+          "consumption": 5.015
+        },
+        "120к": {
+          "thickness": 3.07,
+          "consumption": 5.219
+        }
+      },
+      "8.1": {
+        "45": {
+          "thickness": 0.26,
+          "consumption": 0.442
+        },
+        "60": {
+          "thickness": 0.44,
+          "consumption": 0.748
+        },
+        "90к": {
+          "thickness": 2.94,
+          "consumption": 4.998
+        },
+        "120к": {
+          "thickness": 3.06,
+          "consumption": 5.202
+        }
+      },
+      "8.2": {
+        "45": {
+          "thickness": 0.26,
+          "consumption": 0.442
+        },
+        "60": {
+          "thickness": 0.43,
+          "consumption": 0.731
+        },
+        "90к": {
+          "thickness": 2.93,
+          "consumption": 4.981
+        },
+        "120к": {
+          "thickness": 3.05,
+          "consumption": 5.185
+        }
+      },
+      "8.3": {
+        "45": {
+          "thickness": 0.25,
+          "consumption": 0.425
+        },
+        "60": {
+          "thickness": 0.42,
+          "consumption": 0.714
+        },
+        "90к": {
+          "thickness": 2.92,
+          "consumption": 4.964
+        },
+        "120к": {
+          "thickness": 3.04,
+          "consumption": 5.168
+        }
+      },
+      "8.4": {
+        "45": {
+          "thickness": 0.25,
+          "consumption": 0.425
+        },
+        "60": {
+          "thickness": 0.41,
+          "consumption": 0.697
+        },
+        "90к": {
+          "thickness": 2.91,
+          "consumption": 4.947
+        },
+        "120к": {
+          "thickness": 3.03,
+          "consumption": 5.151
+        }
+      },
+      "8.5": {
+        "45": {
+          "thickness": 0.24,
+          "consumption": 0.408
+        },
+        "60": {
+          "thickness": 0.4,
+          "consumption": 0.68
+        },
+        "90к": {
+          "thickness": 2.9,
+          "consumption": 4.93
+        },
+        "120к": {
+          "thickness": 3.02,
+          "consumption": 5.134
+        }
+      },
+      "8.6": {
+        "45": {
+          "thickness": 0.23,
+          "consumption": 0.391
+        },
+        "60": {
+          "thickness": 0.39,
+          "consumption": 0.663
+        },
+        "90к": {
+          "thickness": 2.89,
+          "consumption": 4.913
+        },
+        "120к": {
+          "thickness": 3.01,
+          "consumption": 5.117
+        }
+      },
+      "8.7": {
+        "45": {
+          "thickness": 0.23,
+          "consumption": 0.391
+        },
+        "60": {
+          "thickness": 0.38,
+          "consumption": 0.646
+        },
+        "90к": {
+          "thickness": 2.88,
+          "consumption": 4.896
+        },
+        "120к": {
+          "thickness": 3,
+          "consumption": 5.1
+        }
+      },
+      "8.8": {
+        "45": {
+          "thickness": 0.22,
+          "consumption": 0.374
+        },
+        "60": {
+          "thickness": 0.38,
+          "consumption": 0.646
+        },
+        "90к": {
+          "thickness": 2.87,
+          "consumption": 4.879
+        },
+        "120к": {
+          "thickness": 2.99,
+          "consumption": 5.083
+        }
+      },
+      "8.9": {
+        "45": {
+          "thickness": 0.22,
+          "consumption": 0.374
+        },
+        "60": {
+          "thickness": 0.37,
+          "consumption": 0.629
+        },
+        "90к": {
+          "thickness": 2.86,
+          "consumption": 4.862
+        },
+        "120к": {
+          "thickness": 2.98,
+          "consumption": 5.066
+        }
+      },
+      "9.0": {
+        "45": {
+          "thickness": 0.21,
+          "consumption": 0.357
+        },
+        "60": {
+          "thickness": 0.36,
+          "consumption": 0.612
+        },
+        "90к": {
+          "thickness": 2.85,
+          "consumption": 4.845
+        },
+        "120к": {
+          "thickness": 2.97,
+          "consumption": 5.049
+        }
+      },
+      "9.1": {
+        "45": {
+          "thickness": 0.21,
+          "consumption": 0.357
+        },
+        "60": {
+          "thickness": 0.35,
+          "consumption": 0.595
+        },
+        "90к": {
+          "thickness": 2.84,
+          "consumption": 4.828
+        },
+        "120к": {
+          "thickness": 2.96,
+          "consumption": 5.032
+        }
+      },
+      "9.2": {
+        "45": {
+          "thickness": 0.2,
+          "consumption": 0.34
+        },
+        "60": {
+          "thickness": 0.34,
+          "consumption": 0.578
+        },
+        "90к": {
+          "thickness": 2.83,
+          "consumption": 4.811
+        },
+        "120к": {
+          "thickness": 2.95,
+          "consumption": 5.015
+        }
+      },
+      "9.3": {
+        "45": {
+          "thickness": 0.19,
+          "consumption": 0.323
+        },
+        "60": {
+          "thickness": 0.33,
+          "consumption": 0.561
+        },
+        "90к": {
+          "thickness": 2.82,
+          "consumption": 4.794
+        },
+        "120к": {
+          "thickness": 2.94,
+          "consumption": 4.998
+        }
+      },
+      "9.4": {
+        "45": {
+          "thickness": 0.19,
+          "consumption": 0.323
+        },
+        "60": {
+          "thickness": 0.33,
+          "consumption": 0.561
+        },
+        "90к": {
+          "thickness": 2.81,
+          "consumption": 4.777
+        },
+        "120к": {
+          "thickness": 2.93,
+          "consumption": 4.981
+        }
+      },
+      "9.5": {
+        "45": {
+          "thickness": 0.18,
+          "consumption": 0.306
+        },
+        "60": {
+          "thickness": 0.32,
+          "consumption": 0.544
+        },
+        "90к": {
+          "thickness": 2.8,
+          "consumption": 4.76
+        },
+        "120к": {
+          "thickness": 2.92,
+          "consumption": 4.964
+        }
+      },
+      "9.6": {
+        "45": {
+          "thickness": 0.18,
+          "consumption": 0.306
+        },
+        "60": {
+          "thickness": 0.31,
+          "consumption": 0.527
+        },
+        "90к": {
+          "thickness": 2.79,
+          "consumption": 4.743
+        },
+        "120к": {
+          "thickness": 2.9,
+          "consumption": 4.93
+        }
+      },
+      "9.7": {
+        "45": {
+          "thickness": 0.17,
+          "consumption": 0.289
+        },
+        "60": {
+          "thickness": 0.3,
+          "consumption": 0.51
+        },
+        "90к": {
+          "thickness": 2.78,
+          "consumption": 4.726
+        },
+        "120к": {
+          "thickness": 2.88,
+          "consumption": 4.896
+        }
+      },
+      "9.8": {
+        "45": {
+          "thickness": 0.17,
+          "consumption": 0.289
+        },
+        "60": {
+          "thickness": 0.3,
+          "consumption": 0.51
+        },
+        "90к": {
+          "thickness": 2.77,
+          "consumption": 4.709
+        },
+        "120к": {
+          "thickness": 2.87,
+          "consumption": 4.879
+        }
+      },
+      "9.9": {
+        "45": {
+          "thickness": 0.16,
+          "consumption": 0.272
+        },
+        "60": {
+          "thickness": 0.29,
+          "consumption": 0.493
+        },
+        "90к": {
+          "thickness": 2.76,
+          "consumption": 4.692
+        },
+        "120к": {
+          "thickness": 2.86,
+          "consumption": 4.862
+        }
+      },
+      "10.0": {
+        "45": {
+          "thickness": 0.16,
+          "consumption": 0.272
+        },
+        "60": {
+          "thickness": 0.28,
+          "consumption": 0.476
+        },
+        "90к": {
+          "thickness": 2.75,
+          "consumption": 4.675
+        },
+        "120к": {
+          "thickness": 2.85,
+          "consumption": 4.845
+        }
+      },
+      "10.1": {
+        "60": {
+          "thickness": 0.27,
+          "consumption": 0.459
+        },
+        "90к": {
+          "thickness": 2.74,
+          "consumption": 4.658
+        },
+        "120к": {
+          "thickness": 2.84,
+          "consumption": 4.828
+        }
+      },
+      "10.2": {
+        "60": {
+          "thickness": 0.27,
+          "consumption": 0.459
+        },
+        "90к": {
+          "thickness": 2.73,
+          "consumption": 4.641
+        },
+        "120к": {
+          "thickness": 2.83,
+          "consumption": 4.811
+        }
+      },
+      "10.3": {
+        "60": {
+          "thickness": 0.26,
+          "consumption": 0.442
+        },
+        "90к": {
+          "thickness": 2.72,
+          "consumption": 4.624
+        },
+        "120к": {
+          "thickness": 2.82,
+          "consumption": 4.794
+        }
+      },
+      "10.4": {
+        "60": {
+          "thickness": 0.25,
+          "consumption": 0.425
+        },
+        "90к": {
+          "thickness": 2.71,
+          "consumption": 4.607
+        },
+        "120к": {
+          "thickness": 2.81,
+          "consumption": 4.777
+        }
+      },
+      "10.5": {
+        "60": {
+          "thickness": 0.24,
+          "consumption": 0.408
+        },
+        "90к": {
+          "thickness": 2.7,
+          "consumption": 4.59
+        },
+        "120к": {
+          "thickness": 2.8,
+          "consumption": 4.76
+        }
+      },
+      "10.6": {
+        "60": {
+          "thickness": 0.24,
+          "consumption": 0.408
+        },
+        "90к": {
+          "thickness": 2.69,
+          "consumption": 4.573
+        },
+        "120к": {
+          "thickness": 2.79,
+          "consumption": 4.743
+        }
+      },
+      "10.7": {
+        "60": {
+          "thickness": 0.23,
+          "consumption": 0.391
+        },
+        "90к": {
+          "thickness": 2.68,
+          "consumption": 4.556
+        },
+        "120к": {
+          "thickness": 2.78,
+          "consumption": 4.726
+        }
+      },
+      "10.8": {
+        "60": {
+          "thickness": 0.22,
+          "consumption": 0.374
+        },
+        "90к": {
+          "thickness": 2.67,
+          "consumption": 4.539
+        },
+        "120к": {
+          "thickness": 2.77,
+          "consumption": 4.709
+        }
+      },
+      "10.9": {
+        "60": {
+          "thickness": 0.22,
+          "consumption": 0.374
+        },
+        "90к": {
+          "thickness": 2.66,
+          "consumption": 4.522
+        },
+        "120к": {
+          "thickness": 2.76,
+          "consumption": 4.692
+        }
+      },
+      "11.0": {
+        "60": {
+          "thickness": 0.21,
+          "consumption": 0.357
+        },
+        "90к": {
+          "thickness": 2.65,
+          "consumption": 4.505
+        },
+        "120к": {
+          "thickness": 2.75,
+          "consumption": 4.675
+        }
+      },
+      "11.1": {
+        "90к": {
+          "thickness": 2.64,
+          "consumption": 4.488
+        },
+        "120к": {
+          "thickness": 2.73,
+          "consumption": 4.641
+        }
+      },
+      "11.2": {
+        "90к": {
+          "thickness": 2.63,
+          "consumption": 4.471
+        },
+        "120к": {
+          "thickness": 2.72,
+          "consumption": 4.624
+        }
+      },
+      "11.3": {
+        "90к": {
+          "thickness": 2.62,
+          "consumption": 4.454
+        },
+        "120к": {
+          "thickness": 2.71,
+          "consumption": 4.607
+        }
+      },
+      "11.4": {
+        "90к": {
+          "thickness": 2.61,
+          "consumption": 4.437
+        },
+        "120к": {
+          "thickness": 2.7,
+          "consumption": 4.59
+        }
+      },
+      "11.5": {
+        "90к": {
+          "thickness": 2.6,
+          "consumption": 4.42
+        },
+        "120к": {
+          "thickness": 2.69,
+          "consumption": 4.573
+        }
+      },
+      "11.6": {
+        "90к": {
+          "thickness": 2.59,
+          "consumption": 4.403
+        },
+        "120к": {
+          "thickness": 2.68,
+          "consumption": 4.556
+        }
+      },
+      "11.7": {
+        "90к": {
+          "thickness": 2.58,
+          "consumption": 4.386
+        },
+        "120к": {
+          "thickness": 2.67,
+          "consumption": 4.539
+        }
+      },
+      "11.8": {
+        "90к": {
+          "thickness": 2.57,
+          "consumption": 4.369
+        },
+        "120к": {
+          "thickness": 2.66,
+          "consumption": 4.522
+        }
+      },
+      "11.9": {
+        "90к": {
+          "thickness": 2.56,
+          "consumption": 4.352
+        },
+        "120к": {
+          "thickness": 2.65,
+          "consumption": 4.505
+        }
+      },
+      "12.0": {
+        "90к": {
+          "thickness": 2.55,
+          "consumption": 4.335
+        },
+        "120к": {
+          "thickness": 2.64,
+          "consumption": 4.488
+        }
+      },
+      "12.1": {},
+      "12.2": {},
+      "12.3": {},
+      "12.4": {}
+    }
+  }
+}

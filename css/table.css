@@ -1,12 +1,21 @@
-table {
+/* ==========================================================================
+   Table Styles
+   ========================================================================== */
+
+table,
+.calc-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border);
   border-radius: 6px;
   overflow: hidden;
   background: #fff;
 }
+
+/* ==========================================================================
+   Table Header
+   ========================================================================== */
 
 thead th {
   background: #f8f8f8;
@@ -15,7 +24,7 @@ thead th {
   color: #222;
   text-align: left;
   padding: 13px 11px;
-  border-bottom: 2px solid #e0e0e0;
+  border-bottom: 2px solid var(--border);
   white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 0.3px;
@@ -33,9 +42,52 @@ thead th .heat-hint {
   text-align: left;
 }
 
+/* Header Hints Row */
+.calc-table__header-hints th {
+  border-bottom: none;
+  padding-bottom: 8px;
+}
+
+/* Header Titles Row */
+.calc-table__header-titles th {
+  padding-top: 8px;
+}
+
+/* ==========================================================================
+   Column Widths
+   ========================================================================== */
+
+.col-element {
+  min-width: 320px;
+}
+
+.col-heat-sides {
+  min-width: 180px;
+}
+
+.col-params {
+  min-width: 320px;
+}
+
+.col-material {
+  min-width: 200px;
+}
+
+.col-results {
+  min-width: 200px;
+}
+
+.col-actions {
+  min-width: 90px;
+}
+
+/* ==========================================================================
+   Table Body
+   ========================================================================== */
+
 tbody td {
   padding: 11px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-light);
   vertical-align: top;
   background: #fff;
 }

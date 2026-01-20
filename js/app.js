@@ -12,8 +12,7 @@ import { ExportService } from './export-service.js';
     await Promise.all([
       dataRepository.loadFromJSON('data/profiles.json'),
       dataRepository.loadFontFromJSON('data/font.json'),
-      dataRepository.loadFrizolFromJSON('data/frizol_data.json'),
-      dataRepository.loadSternfireFromJSON('data/Sternfire_interpolation_tables.json')
+      dataRepository.loadMaterialsFromJSON('data/materials.json')
     ]);
     
     const types = dataRepository.getTypes();

@@ -4,12 +4,10 @@ export class DataRepository {
   constructor() {
     this.DB = {};
     this.DEJAVU_TTF_BASE64 = '';
-    this.frizolData = null;
-    this.sternfireData = null;
+    this.materials = null;
     this.loaded = false;
     this.fontLoaded = false;
-    this.frizolLoaded = false;
-    this.sternfireLoaded = false;
+    this.materialsLoaded = false;
   }
 
   async loadFromJSON(jsonUrl) {
@@ -23,14 +21,8 @@ export class DataRepository {
       this.DB = jsonDB;
       this.loaded = true;
       console.log('JSON data loaded successfully:', Object.keys(jsonDB).length, 'types');
-      console.log('Types:', Object.keys(jsonDB));
-      const firstType = Object.keys(jsonDB)[0];
-      if (firstType) {
-        const standards = Object.keys(jsonDB[firstType]);
-        console.log(`First type "${firstType}" has standards:`, standards);
-      }
     } else {
-      console.error('Failed to load JSON or JSON is empty. jsonDB:', jsonDB);
+      console.error('Failed to load JSON or JSON is empty');
     }
   }
 
@@ -46,113 +38,75 @@ export class DataRepository {
     }
   }
 
+  async loadMaterialsFromJSON(jsonUrl) {
+    if (this.materialsLoaded) return;
+    const data = await JSONLoader.loadFromFile(jsonUrl);
+    if (data) {
+      this.materials = data;
+      this.materialsLoaded = true;
+      console.log('Materials data loaded:', Object.keys(data));
+    } else {
+      console.warn('Failed to load materials JSON');
+    }
+  }
+
   getTypes() {
     return Object.keys(this.DB);
   }
 
   getStandardsFor(type) {
-    const standards = Object.keys(this.DB[type] || {});
-    console.log(`getStandardsFor("${type}") returned:`, standards);
-    return standards;
+    return Object.keys(this.DB[type] || {});
   }
 
   getItemsFor(type, std) {
     return (this.DB[type] && this.DB[type][std]) ? this.DB[type][std] : [];
   }
 
-  async loadFrizolFromJSON(jsonUrl) {
-    if (this.frizolLoaded) return;
-    const frizolData = await JSONLoader.loadFromFile(jsonUrl);
-    if (frizolData && frizolData.data) {
-      this.frizolData = frizolData;
-      this.frizolLoaded = true;
-      console.log('Frizol data loaded');
-    } else {
-      console.warn('Failed to load frizol JSON');
-    }
+  getMaterial(materialId) {
+    if (!this.materials) return null;
+    return this.materials[materialId] || null;
   }
 
-  getFireResistanceLimits(material = 'ograx') {
-    const limits = new Set();
-    
-    if (material === 'sternfire' && this.sternfireData && Array.isArray(this.sternfireData)) {
-      // Для Sternfire берем все ключи кроме "ПТМ" и "null"
-      this.sternfireData.forEach(item => {
-        Object.keys(item).forEach(key => {
-          if (key !== 'ПТМ' && key !== 'null') {
-            limits.add(key);
-          }
-        });
-      });
-    } else if (this.frizolData && this.frizolData.data) {
-      // Для Frizol/Огракс
-      Object.values(this.frizolData.data).forEach(ptmData => {
-        Object.keys(ptmData).forEach(limit => limits.add(limit));
-      });
+  getFireResistanceLimits(materialId = 'ograx') {
+    const material = this.getMaterial(materialId);
+    if (!material || !material.fireResistanceLimits) {
+      return [];
     }
-    
-    // Преобразуем в формат R15, R45 и т.д. если нужно
-    const result = Array.from(limits)
-      .map(limit => {
-        // Если уже в формате R15, оставляем как есть
-        if (limit.startsWith('R')) return limit;
-        // Если просто число, добавляем R
-        if (/^\d+$/.test(limit)) return `R${limit}`;
-        // Иначе оставляем как есть (например "90 мин (конструктив)")
-        return limit;
-      })
-      .sort((a, b) => {
-        // Сортируем: сначала R15, R45, R60, R90, потом остальные
-        const aNum = parseInt(a.replace('R', '')) || 999;
-        const bNum = parseInt(b.replace('R', '')) || 999;
-        return aNum - bNum;
-      });
-    
-    return result;
+
+    return material.fireResistanceLimits.map(limit => {
+      // Конвертируем "15" -> "R15", "90к" -> "90 мин (конструктив)"
+      if (limit === '90к') return '90 мин (конструктив)';
+      if (limit === '120к') return '120 мин (конструктив)';
+      if (/^\d+$/.test(limit)) return `R${limit}`;
+      return limit;
+    });
   }
 
-  async loadSternfireFromJSON(jsonUrl) {
-    if (this.sternfireLoaded) return;
-    const sternfireData = await JSONLoader.loadFromFile(jsonUrl);
-    if (sternfireData && Array.isArray(sternfireData)) {
-      this.sternfireData = sternfireData;
-      this.sternfireLoaded = true;
-      console.log('Sternfire data loaded');
-    } else {
-      console.warn('Failed to load Sternfire JSON');
-    }
-  }
-
-  getThicknessAndConsumption(ptm, fireResistanceLimit, material = 'ograx') {
+  getThicknessAndConsumption(ptm, fireResistanceLimit, materialId = 'ograx') {
     if (!ptm || !fireResistanceLimit) {
-      console.log('getThicknessAndConsumption: missing ptm or fireResistanceLimit', { ptm, fireResistanceLimit });
       return null;
     }
 
     const ptmNum = Number(ptm);
     if (!Number.isFinite(ptmNum)) {
-      console.log('getThicknessAndConsumption: invalid PTM', ptm);
       return null;
     }
 
-    if (material === 'sternfire') {
-      return this.getThicknessFromSternfire(ptmNum, fireResistanceLimit);
-    } else {
-      return this.getThicknessFromFrizol(ptmNum, fireResistanceLimit);
-    }
-  }
-
-  getThicknessFromFrizol(ptmNum, fireResistanceLimit) {
-    if (!this.frizolData || !this.frizolData.data) {
-      console.log('getThicknessFromFrizol: no frizol data');
+    const material = this.getMaterial(materialId);
+    if (!material || !material.data) {
       return null;
     }
 
-    const limit = fireResistanceLimit.replace('R', '');
-    const ptmKeys = Object.keys(this.frizolData.data)
+    // Нормализуем предел огнестойкости
+    let limit = fireResistanceLimit.replace('R', '');
+    if (limit === '90 мин (конструктив)') limit = '90к';
+    if (limit === '120 мин (конструктив)') limit = '120к';
+
+    // Получаем все ПТМ ключи отсортированные по убыванию
+    const ptmKeys = Object.keys(material.data)
       .map(k => ({ str: k, num: Number(k) }))
       .filter(k => Number.isFinite(k.num))
-      .sort((a, b) => b.num - a.num); // Сортируем по убыванию для поиска ближайшего нижнего
+      .sort((a, b) => b.num - a.num);
 
     // Ищем ближайшее нижнее значение ПТМ (<= ptmNum)
     let foundPtmStr = null;
@@ -163,69 +117,37 @@ export class DataRepository {
       }
     }
 
-    if (foundPtmStr && this.frizolData.data[foundPtmStr] && this.frizolData.data[foundPtmStr][limit]) {
-      const result = this.frizolData.data[foundPtmStr][limit];
-      console.log('getThicknessFromFrizol: found', { 
-        requested: ptmNum, 
-        found: foundPtmStr, 
-        limit, 
-        result 
-      });
-      return result;
-    }
-
-    console.log('getThicknessFromFrizol: no data found', { ptmNum, limit, foundPtmStr });
-    return null;
-  }
-
-  getThicknessFromSternfire(ptmNum, fireResistanceLimit) {
-    if (!this.sternfireData || !Array.isArray(this.sternfireData)) {
-      console.log('getThicknessFromSternfire: no sternfire data');
+    if (!foundPtmStr) {
       return null;
     }
 
-    // Сортируем по ПТМ по убыванию для поиска ближайшего нижнего
-    const sortedData = [...this.sternfireData]
-      .filter(item => item && typeof item.ПТМ === 'number')
-      .sort((a, b) => b.ПТМ - a.ПТМ);
-
-    // Ищем ближайшее нижнее значение ПТМ (<= ptmNum)
-    let foundItem = null;
-    for (const item of sortedData) {
-      if (item.ПТМ <= ptmNum) {
-        foundItem = item;
-        break;
-      }
-    }
-
-    if (!foundItem) {
-      console.log('getThicknessFromSternfire: no PTM found <=', ptmNum);
+    const ptmData = material.data[foundPtmStr];
+    if (!ptmData || !ptmData[limit]) {
       return null;
     }
 
-    // Получаем значение толщины для выбранного предела огнестойкости
-    const thickness = foundItem[fireResistanceLimit];
-    
-    if (thickness === null || thickness === undefined) {
-      console.log('getThicknessFromSternfire: no thickness for limit', { 
-        ptm: foundItem.ПТМ, 
-        limit: fireResistanceLimit 
-      });
-      return null;
-    }
+    const result = ptmData[limit];
 
-    console.log('getThicknessFromSternfire: found', { 
-      requested: ptmNum, 
-      found: foundItem.ПТМ, 
-      limit: fireResistanceLimit,
-      thickness 
-    });
-
-    // Для Sternfire возвращаем только толщину (расход не указан в таблице)
-    return { thickness: Number(thickness), consumption: null };
+    // Для Фризол возвращаем thickness и consumption
+    // Для Sternfire только consumption (thickness = null)
+    return {
+      thickness: result.thickness ?? null,
+      consumption: result.consumption ?? null
+    };
   }
 
   getDejaVuFont() {
     return this.DEJAVU_TTF_BASE64;
+  }
+
+  // Legacy методы для обратной совместимости
+  async loadFrizolFromJSON(jsonUrl) {
+    // Не используется, данные теперь в materials.json
+    console.log('loadFrizolFromJSON is deprecated, use loadMaterialsFromJSON');
+  }
+
+  async loadSternfireFromJSON(jsonUrl) {
+    // Не используется, данные теперь в materials.json
+    console.log('loadSternfireFromJSON is deprecated, use loadMaterialsFromJSON');
   }
 }

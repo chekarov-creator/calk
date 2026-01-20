@@ -201,10 +201,9 @@ export class RowManager {
       }
     };
     
+    const fireResSel = makeSelect([], '');
     // Сохраняем функцию для внешнего доступа
     fireResSel._updateOptions = updateFireResistanceOptions;
-    
-    const fireResSel = makeSelect([], '');
     const fireResLabel = document.createElement('label');
     fireResLabel.className = 'param-label';
     fireResLabel.textContent = 'Предел огнестойкости';
@@ -283,11 +282,12 @@ export class RowManager {
     resultsCell.appendChild(qtyWrapper);
 
     const outTot = makeInput('—', true);
+    outTot.className = 'input-total';
     const totLabel = document.createElement('label');
-    totLabel.className = 'param-label';
+    totLabel.className = 'param-label param-label--total';
     totLabel.textContent = 'Итого (кг)';
     const totWrapper = document.createElement('div');
-    totWrapper.className = 'param-group';
+    totWrapper.className = 'param-group param-group--total';
     totWrapper.appendChild(totLabel);
     totWrapper.appendChild(outTot);
     resultsCell.appendChild(totWrapper);
@@ -344,13 +344,35 @@ export class RowManager {
     };
 
     const setHeatMode = (it) => {
-      if (!it) return;
-      if (it.kind === 'rhs' || it.kind === 'plate') heatCtrl.setMode('rect');
-      else if (it.kind === 'pipe' || it.kind === 'round') heatCtrl.setMode('circle');
-      else if (it.kind === 'i') heatCtrl.setMode('poly', 12, 'i');
-      else if (it.kind === 'u') heatCtrl.setMode('poly', 8, 'u');
-      else if (it.kind === 'l') heatCtrl.setMode('poly', 6, 'l');
-      else heatCtrl.setMode('manual');
+      if (!it) {
+        console.log('setHeatMode: no item');
+        return;
+      }
+      console.log('setHeatMode called:', { name: it.name, kind: it.kind });
+      if (it.kind === 'rhs' || it.kind === 'plate') {
+        console.log('Setting mode: rect');
+        heatCtrl.setMode('rect');
+      }
+      else if (it.kind === 'pipe' || it.kind === 'round') {
+        console.log('Setting mode: circle');
+        heatCtrl.setMode('circle');
+      }
+      else if (it.kind === 'i') {
+        console.log('Setting mode: poly/i (12 segments)');
+        heatCtrl.setMode('poly', 12, 'i');
+      }
+      else if (it.kind === 'u') {
+        console.log('Setting mode: poly/u (8 segments)');
+        heatCtrl.setMode('poly', 8, 'u');
+      }
+      else if (it.kind === 'l') {
+        console.log('Setting mode: poly/l (6 segments)');
+        heatCtrl.setMode('poly', 6, 'l');
+      }
+      else {
+        console.log('Setting mode: manual (unknown kind:', it.kind, ')');
+        heatCtrl.setMode('manual');
+      }
     };
 
     const recalc = () => {
@@ -391,10 +413,22 @@ export class RowManager {
         const material = getMaterial();
         const materialData = this.dataRepository.getThicknessAndConsumption(X, fireResValue, material);
         if (materialData) {
-          th = materialData.thickness;
-          thInp.value = String(round(th, 2));
-          consM2 = materialData.consumption;
-          outCons.value = Number.isFinite(consM2) ? String(round(consM2, 3)) : '—';
+          // Для Фризол: есть и толщина и расход
+          // Для Sternfire: только расход (thickness = null)
+          if (materialData.thickness !== null) {
+            th = materialData.thickness;
+            thInp.value = String(round(th, 2));
+          }
+          if (materialData.consumption !== null) {
+            consM2 = materialData.consumption;
+            outCons.value = String(round(consM2, 3));
+          } else {
+            // Fallback: расчёт по формуле
+            const rate = Number($('#ratePerMm').value);
+            th = Number(String(thInp.value).replace(',', '.'));
+            consM2 = (Number.isFinite(rate) && rate >= 0 && Number.isFinite(th) && th >= 0) ? (rate * th) : NaN;
+            outCons.value = Number.isFinite(consM2) ? String(round(consM2, 3)) : '—';
+          }
         } else {
           const rate = Number($('#ratePerMm').value);
           th = Number(String(thInp.value).replace(',', '.'));

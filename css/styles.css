@@ -1,6 +1,596 @@
-@import url('./variables.css');
-@import url('./base.css');
-@import url('./layout.css');
-@import url('./components.css');
-@import url('./table.css');
-@import url('./heat-control.css');
+/* ==========================================================================
+   CSS Variables
+   ========================================================================== */
+
+:root {
+  --b: #111;
+  --br: #e0e0e0;
+  --bg: #f8f8f8;
+  --ok: #1a7f37;
+  --hot: #ff8c00;
+  --primary: #111;
+  --border: #e0e0e0;
+  --border-light: #f0f0f0;
+  --text-primary: #111;
+  --text-secondary: #666;
+  --text-muted: #999;
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-primary);
+  background: #f5f5f5;
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 26px 18px;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1 {
+  margin: 0 0 10px 0;
+  padding: 1px 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: -0.5px;
+}
+
+.page-header {
+  margin-bottom: 26px;
+}
+
+.page-description {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 1px;
+  max-width: 900px;
+}
+
+/* Legacy */
+.sub {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 26px;
+  padding-left: 1px;
+  max-width: 900px;
+}
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.settings-panel {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.settings-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  padding: 18px 2px;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 18px;
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* Legacy */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 18px;
+  padding: 18px 2px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 18px;
+}
+
+.row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: 0 -22px;
+  padding: 0 22px;
+}
+
+@media (max-width: 1100px) {
+  .settings-row,
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .settings-row,
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Card Component
+   ========================================================================== */
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 22px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   Toolbar
+   ========================================================================== */
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 20px 0;
+  padding: 18px 2px;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  padding: 11px 21px;
+  border-radius: 4px;
+  border: 0;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: #000;
+}
+
+.btn--primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: #000;
+}
+
+.btn--secondary,
+.btn.secondary {
+  border: 1px solid #d0d0d0;
+  background: #fff;
+  color: #333;
+}
+
+.btn--secondary:hover,
+.btn.secondary:hover {
+  background: #f8f8f8;
+  border-color: #bbb;
+}
+
+.btn.small {
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 3px;
+}
+
+.btn.danger {
+  background: #d32f2f;
+  color: #fff;
+  border: 0;
+  min-width: 28px;
+  padding: 6px 10px;
+}
+
+.btn.danger:hover {
+  background: #b71c1c;
+}
+
+/* ==========================================================================
+   Form Fields
+   ========================================================================== */
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-label,
+.lbl {
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 7px;
+  padding-left: 1px;
+  font-weight: 500;
+  display: block;
+}
+
+.field-input,
+input,
+select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+select:focus,
+.field-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.1);
+}
+
+input[readonly] {
+  background: #f8f8f8;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.field--note {
+  justify-content: flex-start;
+}
+
+.field-note,
+.mini {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Messages
+   ========================================================================== */
+
+.message {
+  font-size: 13px;
+  display: none;
+  margin-left: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+}
+
+.message--error,
+.err {
+  color: #d32f2f;
+  font-size: 13px;
+  display: none;
+  margin-left: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  background: #ffebee;
+  border-left: 3px solid #d32f2f;
+}
+
+.message--success,
+.ok {
+  color: var(--ok);
+  font-size: 13px;
+  display: none;
+  margin-left: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  background: #e8f5e9;
+  border-left: 3px solid var(--ok);
+}
+
+/* ==========================================================================
+   Table Cell Components
+   ========================================================================== */
+
+.cell {
+  display: grid;
+  gap: 4px;
+}
+
+.params-column {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.param-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.param-label {
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.param-label--total {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.param-group--total {
+  margin-top: 4px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border-light);
+}
+
+.input-total {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  background: #fffde7;
+  border-color: #ffc107;
+}
+
+/* ==========================================================================
+   Heat Hint
+   ========================================================================== */
+
+.heat-hint {
+  margin-top: 0;
+  padding: 6px 8px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  border-left: 3px solid var(--hot);
+}
+
+.heat-hint__title,
+.heat-hint-title {
+  font-size: 10px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.heat-hint__content,
+.heat-hint-content {
+  font-size: 9px;
+  color: #555;
+  line-height: 1.3;
+}
+
+.heat-hint__content p,
+.heat-hint-content p {
+  margin: 0 0 4px 0;
+}
+
+.heat-hint__content p:last-child,
+.heat-hint-content p:last-child {
+  margin-bottom: 0;
+}
+
+.heat-hint__accent,
+.heat-hint-accent {
+  color: var(--hot);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Help Note
+   ========================================================================== */
+
+.help-note,
+.note {
+  margin-top: 18px;
+  padding: 13px 17px;
+  background: #f8f9fa;
+  border-left: 3px solid var(--text-secondary);
+  color: #555;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.help-note strong,
+.note b {
+  color: #333;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Table Styles
+   ========================================================================== */
+
+table,
+.calc-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+
+thead th {
+  background: #f8f8f8;
+  font-size: 11px;
+  font-weight: 600;
+  color: #222;
+  text-align: left;
+  padding: 8px;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+thead th:first-child {
+  text-transform: none;
+  white-space: normal;
+}
+
+thead th .heat-hint {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.calc-table__header-hints th {
+  border-bottom: none;
+  padding-bottom: 8px;
+}
+
+.calc-table__header-titles th {
+  padding-top: 8px;
+}
+
+/* Column Widths */
+.col-element { min-width: 220px; }
+.col-heat-sides { min-width: 140px; }
+.col-params { min-width: 180px; }
+.col-material { min-width: 160px; }
+.col-results { min-width: 160px; }
+.col-actions { min-width: 50px; }
+
+tbody td {
+  padding: 8px;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+  background: #fff;
+}
+
+tbody tr:hover td {
+  background: #fafafa;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ==========================================================================
+   Heat Control
+   ========================================================================== */
+
+.heatbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svgwrap {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: #fff;
+  padding: 6px;
+  position: relative;
+  min-height: 100px;
+  max-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.svgwrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.seg {
+  cursor: pointer;
+  stroke: #bbb;
+  stroke-width: 12;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.seg:hover {
+  opacity: 1;
+  stroke-width: 14;
+}
+
+.seg.on {
+  stroke: #ff8c00;
+  stroke-width: 14;
+  opacity: 1;
+  filter: drop-shadow(0 0 3px rgba(255, 140, 0, 0.5));
+}
+
+.shape {
+  fill: none;
+  stroke: #333;
+  stroke-width: 2.5;
+}
+
+.shape-bg {
+  fill: #f8f8f8;
+  stroke: #ddd;
+  stroke-width: 1;
+}
+
+.heat-label {
+  font-size: 11px;
+  fill: #666;
+  text-anchor: middle;
+}
+
+.heat-label-title {
+  font-size: 12px;
+  fill: #333;
+  font-weight: bold;
+}
