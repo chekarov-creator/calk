@@ -28,7 +28,13 @@ export class HeatControl {
     this.mode = m;
     this.polyType = pType;
     if (this.mode === 'poly') {
-      this.polyMask = (polyLen > 0) ? ((1 << polyLen) - 1) : 1;
+      // Если маска уже установлена и тип не изменился, не сбрасываем её
+      if (this.polyType === pType && this.polyMask > 0) {
+        // Сохраняем текущую маску
+      } else {
+        // Инициализируем маску: все сегменты включены по умолчанию
+        this.polyMask = (polyLen > 0) ? ((1 << polyLen) - 1) : 1;
+      }
     }
     this.render();
   }
@@ -40,6 +46,7 @@ export class HeatControl {
     svg.setAttribute('viewBox', '0 0 120 140');
     svg.setAttribute('width', '140');
     svg.setAttribute('height', '120');
+    svg.style.pointerEvents = 'bounding-box';
 
     if (this.mode === 'rect') {
       this.renderRect(svg, ns);
@@ -61,6 +68,7 @@ export class HeatControl {
     bg.setAttribute('width', '64');
     bg.setAttribute('height', '64');
     bg.setAttribute('class', 'shape-bg');
+    bg.setAttribute('pointer-events', 'none');
     svg.appendChild(bg);
 
     const rect = document.createElementNS(ns, 'rect');
@@ -69,6 +77,7 @@ export class HeatControl {
     rect.setAttribute('width', '64');
     rect.setAttribute('height', '64');
     rect.setAttribute('class', 'shape');
+    rect.setAttribute('pointer-events', 'none');
     svg.appendChild(rect);
 
     const segs = [
@@ -87,7 +96,10 @@ export class HeatControl {
       l.setAttribute('class', 'seg' + ((this.rectMask & s.bit) ? ' on' : ''));
       l.setAttribute('data-side', s.label);
       l.setAttribute('title', `${s.label}: ${(this.rectMask & s.bit) ? 'обогревается' : 'не обогревается'} (клик для переключения)`);
-      l.addEventListener('click', () => {
+      l.setAttribute('pointer-events', 'all');
+      l.style.cursor = 'pointer';
+      l.addEventListener('click', (e) => {
+        e.stopPropagation();
         this.rectMask ^= s.bit;
         if (this.rectMask === 0) this.rectMask = s.bit;
         this.render();
@@ -104,6 +116,7 @@ export class HeatControl {
     bg.setAttribute('cy', cy);
     bg.setAttribute('r', r);
     bg.setAttribute('class', 'shape-bg');
+    bg.setAttribute('pointer-events', 'none');
     svg.appendChild(bg);
 
     const c = document.createElementNS(ns, 'circle');
@@ -111,6 +124,7 @@ export class HeatControl {
     c.setAttribute('cy', cy);
     c.setAttribute('r', r);
     c.setAttribute('class', 'shape');
+    c.setAttribute('pointer-events', 'none');
     svg.appendChild(c);
 
     for (let i = 0; i < this.circleSegs; i++) {
@@ -126,7 +140,10 @@ export class HeatControl {
       l.setAttribute('y2', y2);
       l.setAttribute('class', 'seg' + ((this.circleMask & bit) ? ' on' : ''));
       l.setAttribute('title', `Сегмент ${i + 1}: ${(this.circleMask & bit) ? 'обогревается' : 'не обогревается'} (клик для переключения)`);
-      l.addEventListener('click', () => {
+      l.setAttribute('pointer-events', 'all');
+      l.style.cursor = 'pointer';
+      l.addEventListener('click', (e) => {
+        e.stopPropagation();
         this.circleMask ^= bit;
         if (this.circleMask === 0) this.circleMask = bit;
         this.render();
@@ -141,9 +158,17 @@ export class HeatControl {
     const bg = document.createElementNS(ns, 'path');
     bg.setAttribute('class', 'shape-bg');
     bg.setAttribute('d', this.polyOutlinePath(this.polyType));
+    bg.setAttribute('pointer-events', 'none');
     svg.appendChild(bg);
 
+    const outline = document.createElementNS(ns, 'path');
+    outline.setAttribute('class', 'shape');
+    outline.setAttribute('d', this.polyOutlinePath(this.polyType));
+    outline.setAttribute('pointer-events', 'none');
+    svg.appendChild(outline);
+
     const segLines = this.polySegmentsForSvg(this.polyType);
+    console.log('renderPoly: creating', segLines.length, 'segments for type', this.polyType);
     segLines.forEach((s, idx) => {
       const l = document.createElementNS(ns, 'line');
       l.setAttribute('x1', s.x1);
@@ -152,19 +177,28 @@ export class HeatControl {
       l.setAttribute('y2', s.y2);
       l.setAttribute('class', 'seg' + ((this.polyMask & (1 << idx)) ? ' on' : ''));
       l.setAttribute('title', `Сегмент ${idx + 1}: ${(this.polyMask & (1 << idx)) ? 'обогревается' : 'не обогревается'} (клик для переключения)`);
-      l.addEventListener('click', () => {
+      l.setAttribute('pointer-events', 'visibleStroke');
+      l.setAttribute('data-segment-index', idx);
+      l.style.cursor = 'pointer';
+      l.style.pointerEvents = 'visibleStroke';
+      const clickHandler = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Segment clicked:', idx, 'current mask:', this.polyMask);
         this.polyMask ^= (1 << idx);
         if (this.polyMask === 0) this.polyMask = (1 << idx);
+        console.log('New mask:', this.polyMask);
         this.render();
         this.wrap.dispatchEvent(new CustomEvent('change', { detail: this.getState() }));
-      });
+      };
+      l.addEventListener('click', clickHandler, true);
+      l.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      }, true);
       svg.appendChild(l);
     });
 
-    const outline = document.createElementNS(ns, 'path');
-    outline.setAttribute('class', 'shape');
-    outline.setAttribute('d', this.polyOutlinePath(this.polyType));
-    svg.appendChild(outline);
     this.addLabel(svg, 'Клик по сегментам периметра');
   }
 

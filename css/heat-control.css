@@ -28,24 +28,25 @@
 
 .seg {
   cursor: pointer;
-  stroke: #bbb;
-  stroke-width: 12;
+  stroke: #888;
+  stroke-width: 10;
   stroke-linecap: round;
   fill: none;
-  opacity: 0.7;
+  opacity: 0.9;
   transition: all 0.2s ease;
 }
 
 .seg:hover {
   opacity: 1;
-  stroke-width: 14;
+  stroke-width: 12;
+  stroke: #666;
 }
 
 .seg.on {
   stroke: #ff8c00;
-  stroke-width: 14;
+  stroke-width: 10;
   opacity: 1;
-  filter: drop-shadow(0 0 3px rgba(255, 140, 0, 0.5));
+  filter: drop-shadow(0 0 2px rgba(255, 140, 0, 0.4));
 }
 
 .shape {

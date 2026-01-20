@@ -335,6 +335,11 @@ export class RowManager {
       });
       sizeSel._list = filtered;
       sizeSel.value = '0';
+      // Устанавливаем режим обогрева сразу после обновления списка размеров
+      const it = currentItem();
+      if (it) {
+        setHeatMode(it);
+      }
     };
 
     const currentItem = () => {
@@ -370,7 +375,7 @@ export class RowManager {
         heatCtrl.setMode('poly', 6, 'l');
       }
       else {
-        console.log('Setting mode: manual (unknown kind:', it.kind, ')');
+        console.warn('setHeatMode: unknown kind:', it.kind, 'for item:', it.name, '- setting to manual');
         heatCtrl.setMode('manual');
       }
     };
@@ -472,7 +477,15 @@ export class RowManager {
     });
     stdSel.addEventListener('change', () => { refillSizes(); pInp.value = ''; recalc(); saveData(); });
     search.addEventListener('input', () => { refillSizes(); recalc(); saveData(); });
-    sizeSel.addEventListener('change', () => { pInp.value = ''; recalc(); saveData(); });
+    sizeSel.addEventListener('change', () => { 
+      const it = currentItem();
+      if (it) {
+        setHeatMode(it);
+      }
+      pInp.value = ''; 
+      recalc(); 
+      saveData(); 
+    });
     pInp.addEventListener('input', () => { recalc(); saveData(); });
     thInp.addEventListener('input', () => { recalc(); saveData(); });
     qtyInp.addEventListener('input', () => { recalc(); saveData(); });
@@ -499,28 +512,33 @@ export class RowManager {
       if (rowData.search) search.value = rowData.search;
       refillSizes();
       if (rowData.sizeIndex !== undefined && rowData.sizeIndex !== '') sizeSel.value = rowData.sizeIndex;
+      // Устанавливаем режим на основе выбранного элемента
+      const it = currentItem();
+      if (it) {
+        setHeatMode(it);
+        // Восстанавливаем сохраненное состояние обогрева после установки режима
+        if (rowData.heatState) {
+          const state = rowData.heatState;
+          if (state.rectMask !== undefined && (it.kind === 'rhs' || it.kind === 'plate')) {
+            heatCtrl.rectMask = state.rectMask;
+            heatCtrl.setMode('rect');
+          } else if (state.circleFraction !== undefined && (it.kind === 'pipe' || it.kind === 'round')) {
+            const segs = Math.round(state.circleFraction * 12);
+            heatCtrl.circleMask = (1 << segs) - 1;
+            heatCtrl.setMode('circle');
+          } else if (state.polyMask !== undefined) {
+            heatCtrl.polyMask = state.polyMask;
+            if (it.kind === 'i') heatCtrl.setMode('poly', 12, 'i');
+            else if (it.kind === 'u') heatCtrl.setMode('poly', 8, 'u');
+            else if (it.kind === 'l') heatCtrl.setMode('poly', 6, 'l');
+          }
+        }
+      }
       if (rowData.pInp) pInp.value = rowData.pInp;
       if (rowData.fireRes) fireResSel.value = rowData.fireRes;
       if (rowData.thInp) thInp.value = rowData.thInp;
       if (rowData.qtyInp) qtyInp.value = rowData.qtyInp;
       if (rowData.qtyUnit) qtyUnit.value = rowData.qtyUnit;
-      if (rowData.heatState) {
-        const state = rowData.heatState;
-        if (state.rectMask !== undefined) {
-          heatCtrl.rectMask = state.rectMask;
-          heatCtrl.setMode('rect');
-        } else if (state.circleFraction !== undefined) {
-          const segs = Math.round(state.circleFraction * 12);
-          heatCtrl.circleMask = (1 << segs) - 1;
-          heatCtrl.setMode('circle');
-        } else if (state.polyMask !== undefined) {
-          const it = currentItem();
-          heatCtrl.polyMask = state.polyMask;
-          if (it?.kind === 'i') heatCtrl.setMode('poly', state.polyMask, 'i');
-          else if (it?.kind === 'u') heatCtrl.setMode('poly', state.polyMask, 'u');
-          else if (it?.kind === 'l') heatCtrl.setMode('poly', state.polyMask, 'l');
-        }
-      }
       recalc();
     } else {
       console.log('Calling refillStandards() with typeSel.value:', typeSel.value);
