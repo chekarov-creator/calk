@@ -594,3 +594,59 @@ tbody tr:last-child td {
   fill: #333;
   font-weight: bold;
 }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.page-footer {
+  margin-top: 40px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  background: #fafafa;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-company {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.footer-company strong {
+  color: var(--text-primary);
+}
+
+.footer-contacts {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-contacts {
+    justify-content: center;
+  }
+}

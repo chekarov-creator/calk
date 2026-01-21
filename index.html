@@ -3,12 +3,121 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Калькулятор приведенной толщины металла (ПТМ) и расхода огнезащитных материалов">
+
+  <!-- SEO Meta Tags -->
+  <title>Калькулятор ПТМ — расчет приведенной толщины металла и расхода огнезащиты | Prokras Москва</title>
+  <meta name="description" content="Онлайн калькулятор ПТМ для расчета расхода огнезащитных составов R15-R150. Prokras — напыляемая и конструктивная огнезащита металлоконструкций в Москве и МО. Бесплатный замер и расчет сметы.">
+  <meta name="keywords" content="ПТМ, приведенная толщина металла, калькулятор ПТМ, расход огнезащиты, огнезащита металлоконструкций Москва, напыляемая огнезащита, конструктивная огнезащита, R15 R30 R45 R60 R90 R120 R150, огнезащита воздуховодов, антикоррозийная защита">
+  <meta name="author" content="Prokras">
+  <meta name="geo.region" content="RU-MOW">
+  <meta name="geo.placename" content="Москва">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#1a1a2e">
-  <title>Калькулятор ПТМ (приведенной толщины металла)</title>
+  <link rel="canonical" href="https://prokras.net/ptm-kalkulator-engineering">
+  <link rel="icon" href="https://prokras.net/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://prokras.net/favicon.ico" type="image/x-icon">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://prokras.net/ptm-kalkulator-engineering">
+  <meta property="og:title" content="Калькулятор ПТМ — расчет приведенной толщины металла">
+  <meta property="og:description" content="Онлайн калькулятор приведенной толщины металла (ПТМ) и расхода огнезащитных материалов. Бесплатный расчет с экспортом в PDF.">
+  <meta property="og:image" content="https://prokras.net/ptm-kalkulator-engineering/og-image.jpg">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Prokras">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://prokras.net/ptm-kalkulator-engineering">
+  <meta name="twitter:title" content="Калькулятор ПТМ — расчет приведенной толщины металла">
+  <meta name="twitter:description" content="Онлайн калькулятор ПТМ и расхода огнезащитных материалов. Бесплатный расчет.">
+  <meta name="twitter:image" content="https://prokras.net/ptm-kalkulator-engineering/og-image.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Калькулятор ПТМ",
+    "description": "Онлайн калькулятор приведенной толщины металла (ПТМ) и расхода огнезащитных материалов",
+    "url": "https://prokras.net/ptm-kalkulator-engineering",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "RUB"
+    },
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Prokras",
+      "description": "Напыляемая и конструктивная огнезащита несущих металлоконструкций и воздуховодов R15-R150. Антикоррозийная защита, покраска фасадов, промышленный альпинизм.",
+      "url": "https://prokras.net",
+      "telephone": "+7 (499) 113-22-72",
+      "email": "info@prokras.net",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Москва",
+        "addressRegion": "Московская область",
+        "addressCountry": "RU"
+      },
+      "areaServed": ["Москва", "Московская область"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Услуги огнезащиты",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Напыляемая огнезащита металлоконструкций R15-R120"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Конструктивная огнезащита R15-R150"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Огнезащита воздуховодов"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Антикоррозийная защита металлоконструкций"
+            }
+          }
+        ]
+      },
+      "priceRange": "$$"
+    }
+  }
+  </script>
+
+  <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/table.css">
   <link rel="stylesheet" href="css/heat-control.css">
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+    ym(74658289, 'init', {webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/74658289" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 </head>
 <body>
   <div class="wrap">
@@ -126,6 +235,19 @@
         </div>
       </section>
     </main>
+
+    <footer class="page-footer">
+      <div class="footer-content">
+        <div class="footer-company">
+          <strong>Prokras</strong> — напыляемая и конструктивная огнезащита металлоконструкций в Москве и МО
+        </div>
+        <div class="footer-contacts">
+          <a href="tel:+74991132272" class="footer-link">+7 (499) 113-22-72</a>
+          <a href="mailto:info@prokras.net" class="footer-link">info@prokras.net</a>
+          <a href="https://prokras.net" class="footer-link" target="_blank" rel="noopener">prokras.net</a>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <!-- Внешние библиотеки -->

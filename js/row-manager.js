@@ -637,7 +637,8 @@ export class RowManager {
       const c2 = resultsInputs[0]?.value || '';
       const qty = resultsCell?.querySelector('input[type="number"]')?.value || '';
       const unit = resultsCell?.querySelector('select')?.value || '';
-      const tot = resultsInputs[1]?.value || '';
+      // Итого теперь в отдельной колонке td:nth-child(6)
+      const tot = tr.querySelector('.input-total')?.value || '';
       if (S && S !== '—') {
         rows.push({
           'Тип': type, 'ГОСТ': std, 'Размер': name, 'Периметр обогреваемой поверхности см': P_in,
