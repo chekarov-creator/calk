@@ -66,6 +66,7 @@ export class RowManager {
       rows.forEach(rowData => {
         this.addRowFromData(rowData);
       });
+      setTimeout(() => this.updateGrandTotal(), 150);
       return true;
     } catch (e) {
       console.warn('Failed to load from localStorage:', e);
@@ -281,25 +282,24 @@ export class RowManager {
     qtyWrapper.appendChild(qtyCell);
     resultsCell.appendChild(qtyWrapper);
 
-    const outTot = makeInput('—', true);
-    outTot.className = 'input-total';
-    const totLabel = document.createElement('label');
-    totLabel.className = 'param-label param-label--total';
-    totLabel.textContent = 'Итого (кг)';
-    const totWrapper = document.createElement('div');
-    totWrapper.className = 'param-group param-group--total';
-    totWrapper.appendChild(totLabel);
-    totWrapper.appendChild(outTot);
-    resultsCell.appendChild(totWrapper);
-
     tdResults.appendChild(resultsCell);
     tr.appendChild(tdResults);
 
+    // Отдельная колонка для Итого (кг)
+    const tdTotal = document.createElement('td');
+    tdTotal.className = 'td-total';
+    const outTot = makeInput('—', true);
+    outTot.className = 'input-total';
+    tdTotal.appendChild(outTot);
+    tr.appendChild(tdTotal);
+
+    // Кнопка удаления
     const tdAct = document.createElement('td');
+    tdAct.className = 'td-actions';
     const btnDel = document.createElement('button');
     btnDel.type = 'button';
-    btnDel.className = 'btn danger small';
-    btnDel.textContent = '×';
+    btnDel.className = 'btn-delete';
+    btnDel.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14M10 11v6M14 11v6"/></svg>';
     btnDel.title = 'Удалить строку';
     tdAct.appendChild(btnDel);
     tr.appendChild(tdAct);
@@ -459,10 +459,13 @@ export class RowManager {
         if (unit === 't' && Number.isFinite(areaPerT)) totalKg = consM2 * areaPerT * qty;
       }
       outTot.value = Number.isFinite(totalKg) ? String(round(totalKg, 2)) : '—';
+      this.updateGrandTotal();
     };
 
     const saveData = () => {
-      setTimeout(() => this.saveToLocalStorage(), 100);
+      setTimeout(() => {
+        this.saveToLocalStorage();
+      }, 100);
     };
 
     heatCtrl.el._heatControl = heatCtrl;
@@ -547,6 +550,7 @@ export class RowManager {
       recalc();
     }
     this.tbody.appendChild(tr);
+    this.updateGrandTotal();
   }
 
   addRowFromData(rowData) {
@@ -560,6 +564,7 @@ export class RowManager {
       const th = calculationsCell?.querySelector('input[type="number"]');
       if (th) th.dispatchEvent(new Event('input'));
     });
+    this.updateGrandTotal();
     this.messageManager.showOk('Пересчитано.');
     setTimeout(() => this.messageManager.hideMsg(), 1200);
   }
@@ -583,6 +588,29 @@ export class RowManager {
       console.warn('Failed to clear localStorage:', e);
     }
     this.addRow();
+    this.updateGrandTotal();
+  }
+
+  updateGrandTotal() {
+    try {
+      let sum = 0;
+      const rows = $$('#tbody tr');
+      rows.forEach(tr => {
+        const totInput = tr.querySelector('.input-total');
+        if (totInput && totInput.value && totInput.value !== '—') {
+          const val = parseFloat(totInput.value);
+          if (Number.isFinite(val)) {
+            sum += val;
+          }
+        }
+      });
+      const grandTotalEl = $('#grandTotal');
+      if (grandTotalEl) {
+        grandTotalEl.value = round(sum, 2);
+      }
+    } catch (e) {
+      console.warn('updateGrandTotal error:', e);
+    }
   }
 
   collectRows() {

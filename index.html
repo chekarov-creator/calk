@@ -7,6 +7,8 @@
   <meta name="theme-color" content="#1a1a2e">
   <title>Калькулятор ПТМ (приведенной толщины металла)</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/table.css">
+  <link rel="stylesheet" href="css/heat-control.css">
 </head>
 <body>
   <div class="wrap">
@@ -74,14 +76,6 @@
                 <option value="t">тн</option>
               </select>
             </div>
-
-            <div class="field field--note">
-              <span class="field-label">Примечание</span>
-              <p class="field-note">
-                CSV теперь скачивается в UTF-8 с BOM (Excel открывает без "крякозябр").
-                PDF использует встроенный шрифт с кириллицей.
-              </p>
-            </div>
           </div>
         </fieldset>
 
@@ -107,47 +101,29 @@
         <div class="table-container">
           <table class="calc-table" aria-label="Таблица расчетов ПТМ">
             <thead>
-              <tr class="calc-table__header-hints">
-                <th class="col-element">
-                  <div class="heat-hint">
-                    <p class="heat-hint__title">Выбор обогрева</p>
-                    <div class="heat-hint__content">
-                      <p><span class="heat-hint__accent">Оранжевый = обогреваемая сторона</span></p>
-                      <p><strong>Кликните по сторонам для выбора</strong></p>
-                      <p>
-                        Обогреваемый периметр <strong>P</strong> рассчитывается автоматически.
-                        При необходимости можно ввести P вручную (будет иметь приоритет).
-                      </p>
-                    </div>
-                  </div>
-                </th>
-                <th class="col-heat-sides"></th>
-                <th class="col-params"></th>
-                <th class="col-material"></th>
-                <th class="col-results"></th>
-                <th class="col-actions"></th>
-              </tr>
               <tr class="calc-table__header-titles">
                 <th class="col-element">Элемент</th>
                 <th class="col-heat-sides">Выбор сторон обогрева</th>
                 <th class="col-params">Параметры Элемента</th>
                 <th class="col-material">Расчет материала</th>
                 <th class="col-results">Результаты</th>
+                <th class="col-total">Итого (кг)</th>
                 <th class="col-actions"></th>
               </tr>
             </thead>
-            <tbody id="tbody"></tbody>
+            <tbody id="tbody">            </tbody>
+            <tfoot>
+              <tr class="calc-table__total-row">
+                <td colspan="5"></td>
+                <td class="grand-total-cell">
+                  <span class="grand-total-label">Общая сумма:</span>
+                  <input id="grandTotal" type="text" class="input-grand-total" value="0" readonly>
+                </td>
+                <td></td>
+              </tr>
+            </tfoot>
           </table>
         </div>
-
-        <!-- Подсказка -->
-        <aside class="help-note">
-          <strong>Подсказка:</strong>
-          для профильной трубы и листа — клик по сторонам;
-          для трубы круглой — по дугам;
-          для двутавра/швеллера/уголка — клик по сегментам периметра.
-          Если нужно нестандартное примыкание — можно вручную задать P.
-        </aside>
       </section>
     </main>
   </div>

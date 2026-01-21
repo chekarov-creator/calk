@@ -31,3 +31,5 @@ Ivan:
      "120 мин (конструктив)": 2.7,
     "null": null
   },
+
+"prokras.net, +7 (499) 113-22-72, info@prokras.net"
